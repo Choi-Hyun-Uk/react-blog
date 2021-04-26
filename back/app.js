@@ -6,6 +6,8 @@ const passport = require('passport');
 const passortConfig = require('./passport');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const helmet = require('helmet');
+const hpp = require('hpp');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -34,10 +36,17 @@ sequelize.sync({ force: false })
 // 패스포트 js 실행
 passortConfig();
 // 포트 설정
-app.set('port', process.env.PORT || 3050);
+app.set('port', process.env.PORT || 80);
 
-// 로깅 미들웨어
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'production') { // 배포 시
+    // 로깅 미들웨어
+    app.use(morgan('combined'));
+    app.use(hpp());
+    app.use(helmet());
+} else {
+    // 로깅 미들웨어
+    app.use(morgan('dev'));
+}
 
 // path.join을 사용할 경우 OS 체제에 맞게 별도로 경로를 설정하지 않아도 된다
 // 정적파일 제공 시 - express.static
@@ -50,7 +59,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extends: true }));
 // CORS 처리를 위한 미들웨어
 app.use(cors({
-    origin: 'http://localhost:3000', // 브라우저에서 서버간 허용 주소
+    origin: ['http://localhost:3000', 'slog.com'], // 브라우저에서 서버간 허용 주소
     credentials: true, // front, back 간 쿠키 전달 허용
 }));
 
