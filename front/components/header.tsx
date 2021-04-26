@@ -6,7 +6,6 @@ import { RootState } from 'slices';
 import { HeaderWrapper } from './styles';
 import Modal from '../modal/menuModal';
 import Link from 'next/link';
-import PostSearch from './search/searchForm';
 
 const Header = () => {
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);

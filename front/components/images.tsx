@@ -1,10 +1,10 @@
 import React from 'react';
-import { ImgWrapper } from './styles';
+import { backURL } from 'config/config';
 
 const Images = ({ filename }) => {
   return (
     <li>
-      <img src={`http://localhost:3050/${filename}`} />
+      <img src={`${backURL}/${filename}`} />
     </li>
   );
 };

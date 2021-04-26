@@ -5,6 +5,7 @@ import { RootState } from 'slices';
 import ProfileForm from './profileForm';
 import { RiAddFill } from 'react-icons/ri';
 import { userImageUpload, profileImageUpload } from 'actions/user';
+import { backURL } from 'config/config';
 
 const UserProfile = () => {
   const { imagePaths } = useSelector((state: RootState) => state.user);
@@ -48,7 +49,7 @@ const UserProfile = () => {
         <div className="user-thumb">
           {user.Images.length > 0 && (
             <div>
-              <img src={`http://localhost:3050/${user.Images[0].src}`} />
+              <img src={`${backURL}/${user.Images[0].src}`} />
             </div>
           )}
           {/* {user.Images.length <= 0 && ( */}

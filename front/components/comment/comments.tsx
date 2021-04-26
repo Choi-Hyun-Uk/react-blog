@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 
 import LoginModal from 'modal/loginModal';
 import DeleteCommentModal from 'modal/deleteCommentModal';
+import { backURL } from 'config/config';
 
 const Comments = ({ item }) => {
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn); // 로그인 상태
@@ -78,7 +79,7 @@ const Comments = ({ item }) => {
           <div className="user-info">
             {item.User.Images.length > 0 && (
               <div>
-                <img src={`http://localhost:3050/${item.User.Images[0].src}`} />
+                <img src={`${backURL}/${item.User.Images[0].src}`} />
               </div>
             )}
             <h1>{item.User.nickname}</h1>
@@ -91,7 +92,7 @@ const Comments = ({ item }) => {
           <div className="user-info">
             {item.User.Images.length > 0 && (
               <div>
-                <img src={`http://localhost:3050/${item.User.Images[0].src}`} />
+                <img src={`${backURL}/${item.User.Images[0].src}`} />
               </div>
             )}
             <h1>{item.User.nickname}</h1>

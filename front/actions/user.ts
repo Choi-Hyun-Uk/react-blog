@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { backURL } from 'config/config';
 
-axios.defaults.baseURL = 'http://localhost:3050';
+axios.defaults.baseURL = backURL;
 axios.defaults.withCredentials = true;
 
 export interface User {

@@ -2,6 +2,7 @@ import React from 'react';
 import { MyPostBox } from '../styles/styles';
 import dayjs from 'dayjs';
 import Link from 'next/link';
+import { backURL } from 'config/config';
 
 const MyPostCard = ({ post }) => {
   const date = dayjs(post.createdAt);
@@ -32,7 +33,7 @@ const MyPostCard = ({ post }) => {
         <div className="user-info">
           {post.User.Images.length > 0 && (
             <div>
-              <img src={`http://localhost:3050/${post.User.Images[0].src}`} />
+              <img src={`${backURL}/${post.User.Images[0].src}`} />
             </div>
           )}
           <p>{post.User.nickname}</p>
@@ -40,7 +41,7 @@ const MyPostCard = ({ post }) => {
         <div className="post-desc">
           {post.Images.length > 0 && (
             <div className="image">
-              <img src={`http://localhost:3050/${post.Images[0].src}`} />
+              <img src={`${backURL}/${post.Images[0].src}`} />
             </div>
           )}
           <p>{post.content}</p>
