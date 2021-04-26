@@ -5,7 +5,7 @@ import { RootState } from 'slices';
 import ProfileForm from './profileForm';
 import { RiAddFill } from 'react-icons/ri';
 import { userImageUpload, profileImageUpload } from 'actions/user';
-import { backURL } from 'config/config';
+import { backURL } from '../config/config';
 
 const UserProfile = () => {
   const { imagePaths } = useSelector((state: RootState) => state.user);

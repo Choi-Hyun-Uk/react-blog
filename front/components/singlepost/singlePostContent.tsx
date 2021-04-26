@@ -13,7 +13,7 @@ import EditPostForm from './editPostForm';
 import Link from 'next/link';
 import PrevArrow from './prevArrow';
 import NextArrow from './nextArrow';
-import { backURL } from 'config/config';
+import { backURL } from '../../config/config';
 
 const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
   const post = useSelector((state: RootState) => state.post.singlePost);

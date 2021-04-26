@@ -3,7 +3,7 @@ import { HiHeart } from 'react-icons/hi';
 import { PostLayout } from './styles';
 import dayjs from 'dayjs';
 import Link from 'next/link';
-import { backURL } from 'config/config';
+import { backURL } from '../../config/config';
 
 const PostCardLayout = ({ item }) => {
   const date = dayjs(item.createdAt);

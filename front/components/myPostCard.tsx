@@ -2,7 +2,7 @@ import React from 'react';
 import { MyPostBox } from '../styles/styles';
 import dayjs from 'dayjs';
 import Link from 'next/link';
-import { backURL } from 'config/config';
+import { backURL } from '../config/config';
 
 const MyPostCard = ({ post }) => {
   const date = dayjs(post.createdAt);

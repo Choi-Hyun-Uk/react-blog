@@ -3,7 +3,7 @@ import Link from 'next/link';
 import dayjs from 'dayjs';
 
 import { SearchPostCard } from './styles';
-import { backURL } from 'config/config';
+import { backURL } from '../../config/config';
 
 const SearchPost = ({ post }) => {
   const date = dayjs(post.createdAt);

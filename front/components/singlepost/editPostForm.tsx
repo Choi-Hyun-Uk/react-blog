@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { uploadImages, removeImage } from '../../actions/post';
 import { RootState } from 'slices';
 import dayjs from 'dayjs';
-import { backURL } from 'config/config';
+import { backURL } from '../../config/config';
 
 const EditPostForm = ({
   onEditCancle,
