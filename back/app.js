@@ -6,6 +6,9 @@ const passport = require('passport');
 const passortConfig = require('./passport');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // 모델 불러오기
 const { sequelize } = require('./models');
@@ -52,12 +55,12 @@ app.use(cors({
 }));
 
 // header의 쿠키를 해석 및 req.cookies에서 확인할 수 있는 미들웨어
-app.use(cookieParser('cookiesecret'));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 // session을 사용하기 위한 express 미들웨어
 app.use(session({
     resave: false,
     saveUninitialized: false,
-    secret: 'cookiesecret',
+    secret: process.env.COOKIE_SECRET,
     cookie: { // 세션 ID 쿠키에 대한 설정 (만료기한, 시간 등..)
         httpOnly: true,
     },
