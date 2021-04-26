@@ -1,0 +1,4 @@
+node_modules
+.next
+react-blog.pem
+.env
