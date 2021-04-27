@@ -60,7 +60,7 @@ router.post('/signup', async (req, res, next) => {
 });
 
 // 로그인 상태 불러오기
-router.get('/loadUser', async (req, res, next) => {
+router.get('/loadUser', isLoggedIn, async (req, res, next) => {
     try {
         if (req.user) {
             const user = await User.findOne({
@@ -80,11 +80,10 @@ router.get('/loadUser', async (req, res, next) => {
                     where: { id: image },
                 }],
             });
-            res.status(200).json(fullUser);
+            return res.status(200).json(fullUser);
         } else {
             res.status(200).json(null);
         }
-        
     } catch(error) {
         console.log('로그인 불러오기 에러발생!!!!');
         console.error(error);
