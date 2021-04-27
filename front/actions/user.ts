@@ -46,21 +46,20 @@ export const logOut = createAsyncThunk('/logOut', async () => {
 });
 
 // 로그인 상태 불러오기
-export const loadUser = createAsyncThunk('/user/loadUser', async () => {
+export const loadUser = createAsyncThunk('/user/loadUser', async (data, { rejectWithValue }) => {
   try {
     const response = await axios.get('/user/loaduser');
     return response.data;
   } catch (error) {
     console.error(error);
-    return error;
+    return rejectWithValue(error.response.data);
   }
 });
 
-// 로그인 상태 불러오기
+// 유저 정보 수정하기
 export const editUser = createAsyncThunk('/user/editUser', async (data: Nickname, { rejectWithValue }) => {
   try {
     const response = await axios.patch(`/user`, data);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);
