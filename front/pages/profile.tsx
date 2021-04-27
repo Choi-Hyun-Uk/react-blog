@@ -4,6 +4,7 @@ import wrapper from 'store/configureStore';
 import axios from 'axios';
 import { loadUser } from 'actions/user';
 import UserProfile from 'components/userProfile';
+import { GetServerSideProps } from 'next';
 
 const Profile = () => {
   return (
@@ -14,7 +15,7 @@ const Profile = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
   console.log(context.store.getState());
   const cookie = context.req ? context.req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';

@@ -8,6 +8,7 @@ import { SearchPostCardWrapper } from '../styles/styles';
 import wrapper from 'store/configureStore';
 import axios from 'axios';
 import { loadUser } from 'actions/user';
+import { GetServerSideProps } from 'next';
 
 const Search = () => {
   const { searchPosts } = useSelector((state: RootState) => state.post);
@@ -28,7 +29,7 @@ const Search = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
   console.log(context.store.getState());
   const cookie = context.req ? context.req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';

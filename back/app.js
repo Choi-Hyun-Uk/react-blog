@@ -92,7 +92,7 @@ app.use('/post', postRouter); // /post
 app.use('/posts', postsRouter); // /posts
 
 app.get('/', (req, res) => {
-    res.send('3051 포트 연결!');
+    res.send('80 포트 연결!');
 });
 
 // 404 처리 미들웨어

@@ -3,12 +3,13 @@ import SignupForm from 'components/signupForm';
 import wrapper from 'store/configureStore';
 import { loadUser } from 'actions/user';
 import axios from 'axios';
+import { GetServerSideProps } from 'next';
 
 const Signup = () => {
   return <SignupForm />;
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
   const cookie = context.req ? context.req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';
   // 쿠키가 브라우저에 있는경우만 넣어서 실행

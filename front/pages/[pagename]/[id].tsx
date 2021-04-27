@@ -6,6 +6,7 @@ import SinglePostContent from 'components/singlepost/singlePost';
 import { singlePostLoad } from '../../actions/post';
 import wrapper from 'store/configureStore';
 import { loadUser } from 'actions/user';
+import { GetServerSideProps } from 'next';
 
 const Post = () => {
   return (
@@ -16,7 +17,7 @@ const Post = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
   const cookie = context.req ? context.req.headers.cookie : '';
 
   axios.defaults.headers.Cookie = '';
@@ -25,8 +26,6 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
   if (context.req && cookie) {
     axios.defaults.headers.Cookie = cookie;
   }
-
-  console.log('params', context.params);
 
   await context.store.dispatch(loadUser());
   await context.store.dispatch(
