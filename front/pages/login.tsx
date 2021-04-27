@@ -9,10 +9,10 @@ const LogIn = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (user && user?.id) {
+    if (user) {
       router.push('/');
     }
-  }, [user, user.id]);
+  }, [user]);
 
   return (
     <>
