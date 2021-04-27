@@ -11,11 +11,13 @@ const LogIn = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const router = useRouter();
 
-  useEffect(() => {
-    if (user && user?.id) {
-      router.push('/', null, { shallow: true });
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user && user?.id) {
+  //     router.push('/', null, { shallow: true });
+  //   }
+  // }, [user]);
+
+  console.log(user);
 
   return (
     <>
