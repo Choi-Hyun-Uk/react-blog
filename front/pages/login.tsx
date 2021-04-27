@@ -9,7 +9,6 @@ import { loadUser } from 'actions/user';
 
 const LogIn = () => {
   const { user } = useSelector((state: RootState) => state.user);
-  // const router = useRouter();
 
   useEffect(() => {
     if (user && user?.id) {

@@ -37,7 +37,7 @@ sequelize.sync({ force: false })
 passortConfig();
 
 // 포트 설정
-app.set('port', process.env.PORT || 80);
+// app.set('port', 80);
 
 const sessionOption = {
     resave: false,
@@ -107,6 +107,10 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500).send(err.message);
 });
 
-app.listen(app.get('port'), () => {
-    console.log(app.get('port'), '번 포트애서 대기중');
+// app.listen(app.get('port'), () => {
+//     console.log(app.get('port'), '번 포트애서 대기중');
+// });
+
+app.listen(80, () => {
+    console.log('서버 실행 중!');
 });

@@ -3,14 +3,16 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
-  compress: true, // gzip
+  compress: true,
   webpack(config, { webpack }) {
     const prod = process.env.NODE_ENV === 'production';
     return {
       ...config,
       mode: prod ? 'production' : 'development',
-      devtool: prod ? 'hidden-source-map' : 'eval',
-      plugins: [...config.plugins],
+      devtool: prod ? 'hidden-source-map' : 'inline-source-map',
+      plugins: [
+        ...config.plugins,
+      ],
     };
   },
 });
