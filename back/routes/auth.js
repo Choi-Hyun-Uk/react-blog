@@ -27,7 +27,7 @@ router.post('/login', async (req, res, next) => {
                     exclude: ['password'], // 속성 중 password만 제외
                 },
             });
-            res.status(200).json(fullUser);
+            return res.status(200).json(fullUser);
         });
     })(req, res, next);
 });
