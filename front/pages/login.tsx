@@ -2,22 +2,20 @@ import React, { useEffect } from 'react';
 import LoginForm from 'components/loginForm';
 import { useSelector } from 'react-redux';
 import { RootState } from 'slices';
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 import wrapper from 'store/configureStore';
 import axios from 'axios';
 import { loadUser } from 'actions/user';
 
 const LogIn = () => {
   const { user } = useSelector((state: RootState) => state.user);
-  const router = useRouter();
+  // const router = useRouter();
 
-  // useEffect(() => {
-  //   if (user && user?.id) {
-  //     router.push('/', null, { shallow: true });
-  //   }
-  // }, [user]);
-
-  console.log(user);
+  useEffect(() => {
+    if (user && user?.id) {
+      Router.push('/');
+    }
+  }, [user]);
 
   return (
     <>
