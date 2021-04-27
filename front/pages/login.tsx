@@ -5,14 +5,14 @@ import { RootState } from 'slices';
 import { useRouter } from 'next/router';
 
 const LogIn = () => {
-  const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
+  const { user } = useSelector((state: RootState) => state.user);
   const router = useRouter();
 
   useEffect(() => {
-    if (isLoggedIn) {
-      router.replace('/');
+    if (user && user.id) {
+      router.push('/');
     }
-  }, [isLoggedIn]);
+  }, [user, user.id]);
 
   return (
     <>
