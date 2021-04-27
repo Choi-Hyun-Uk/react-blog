@@ -10,8 +10,6 @@ const helmet = require('helmet');
 const hpp = require('hpp');
 const dotenv = require('dotenv');
 
-dotenv.config();
-
 // 모델 불러오기
 const { sequelize } = require('./models');
 
@@ -20,6 +18,8 @@ const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
 const postRouter = require('./routes/post');
 const postsRouter = require('./routes/posts'); // 포스트 여러개 불러오는 라우터
+
+dotenv.config();
 
 // app 변수에 express 객체 담기
 const app = express();
@@ -35,6 +35,7 @@ sequelize.sync({ force: false })
 
 // 패스포트 js 실행
 passortConfig();
+
 // 포트 설정
 app.set('port', process.env.PORT || 80);
 
@@ -48,6 +49,12 @@ if (process.env.NODE_ENV === 'production') { // 배포 시
     app.use(morgan('dev'));
 }
 
+// CORS 처리를 위한 미들웨어
+app.use(cors({
+    origin: ['http://localhost:3000', 'slog.com', 'http://13.124.143.254'], // 브라우저에서 서버간 허용 주소
+    credentials: true, // front, back 간 쿠키 전달 허용
+}));
+
 // path.join을 사용할 경우 OS 체제에 맞게 별도로 경로를 설정하지 않아도 된다
 // 정적파일 제공 시 - express.static
 // console.log('경로' ,path.join(__dirname), 'uploads');
@@ -57,11 +64,6 @@ app.use('/', express.static(path.join(__dirname, '/uploads/thumb')));
 app.use(express.json());
 // urlencoded - form submit으로 전달받은 data를 사용하기 위한 미들웨어 (필수 장착)
 app.use(express.urlencoded({ extends: true }));
-// CORS 처리를 위한 미들웨어
-app.use(cors({
-    origin: ['http://localhost:3000', 'slog.com', 'http://13.124.143.254'], // 브라우저에서 서버간 허용 주소
-    credentials: true, // front, back 간 쿠키 전달 허용
-}));
 
 // header의 쿠키를 해석 및 req.cookies에서 확인할 수 있는 미들웨어
 app.use(cookieParser(process.env.COOKIE_SECRET));
