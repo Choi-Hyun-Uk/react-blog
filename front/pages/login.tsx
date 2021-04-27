@@ -9,7 +9,7 @@ const LogIn = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (user) {
+    if (user && user?.id) {
       router.push('/');
     }
   }, [user]);

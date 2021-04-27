@@ -17,7 +17,7 @@ const createStore = () => {
   const store = configureStore({
     reducer,
     middleware,
-    devTools: isDev,
+    devTools: true,
   });
 
   return store;

@@ -39,11 +39,21 @@ passortConfig();
 // 포트 설정
 app.set('port', process.env.PORT || 80);
 
+const sessionOption = {
+    resave: false,
+    saveUninitialized: false,
+    secret: process.env.COOKIE_SECRET,
+    cookie: { // 세션 ID 쿠키에 대한 설정 (만료기한, 시간 등..)
+        httpOnly: true,
+        secure: false,
+    },
+}
+
 if (process.env.NODE_ENV === 'production') { // 배포 시
     // 로깅 미들웨어
     app.use(morgan('combined'));
-    app.use(hpp());
     app.use(helmet());
+    app.use(hpp());
 } else {
     // 로깅 미들웨어
     app.use(morgan('dev'));
@@ -68,15 +78,7 @@ app.use(express.urlencoded());
 // header의 쿠키를 해석 및 req.cookies에서 확인할 수 있는 미들웨어
 app.use(cookieParser(process.env.COOKIE_SECRET));
 // session을 사용하기 위한 express 미들웨어
-app.use(session({
-    resave: false,
-    saveUninitialized: false,
-    secret: process.env.COOKIE_SECRET,
-    cookie: { // 세션 ID 쿠키에 대한 설정 (만료기한, 시간 등..)
-        httpOnly: true,
-    },
-    name: 'connect_sid',
-}));
+app.use(session(sessionOption));
 
 // express 기반 애플리케이션에서 패스포트를 초기화하는 미들웨어
 app.use(passport.initialize());
