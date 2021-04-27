@@ -48,6 +48,7 @@ export const logOut = createAsyncThunk('/logOut', async () => {
 // 로그인 상태 불러오기
 export const loadUser = createAsyncThunk('/user/loadUser', async (data, { rejectWithValue }) => {
   try {
+    console.log('로그인 상태 action');
     const response = await axios.get('/user/loaduser');
     return response.data;
   } catch (error) {
