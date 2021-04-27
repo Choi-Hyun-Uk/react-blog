@@ -82,7 +82,7 @@ router.get('/loadUser', async (req, res, next) => {
             });
             res.status(200).json(fullUser);
         } else {
-            res.status(200).json(null);
+            res.status(200).send('로그인을 해주세요.');
         }
     } catch(error) {
         console.log('로그인 불러오기 에러발생!!!!');
