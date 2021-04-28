@@ -9,10 +9,10 @@ import { loadUser } from 'actions/user';
 import { GetServerSideProps } from 'next';
 
 const LogIn = () => {
-  const { user } = useSelector((state: RootState) => state.user);
+  const { user, isLoginDone } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
-    if (user && user?.id) {
+    if (user && isLoginDone) {
       Router.push('/');
     }
   }, [user]);

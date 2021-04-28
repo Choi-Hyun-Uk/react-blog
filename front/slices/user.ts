@@ -26,13 +26,17 @@ const userSlice = createSlice({
         state.isSignupError = action.payload;
       })
       // 로그인
-      .addCase(logIn.pending, (state, action) => {})
+      .addCase(logIn.pending, (state, action) => {
+        state.isLoginDone = false;
+      })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+        state.isLoginDone = true;
         state.isLoginError = null;
       })
       .addCase(logIn.rejected, (state, action) => {
+        state.isLoginDone = false;
         state.isLoginError = action.payload;
       })
       // 로그아웃
