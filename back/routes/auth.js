@@ -16,6 +16,7 @@ router.post('/login', async (req, res, next) => {
         }
         // 위 에러 없이 로그인 진행 될 경우
         return req.logIn(user, async (loginErr) => {
+            console.log('auth user', user)
             if (loginErr) { // passport.serialize에서 에러 시
                 console.error(err);
                 return next(err);
