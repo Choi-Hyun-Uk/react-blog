@@ -10,14 +10,14 @@ const helmet = require('helmet');
 const hpp = require('hpp');
 const dotenv = require('dotenv');
 
-// 모델 불러오기
-const { sequelize } = require('./models');
-
 // 라우트 불러오기
 const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
 const postRouter = require('./routes/post');
 const postsRouter = require('./routes/posts'); // 포스트 여러개 불러오는 라우터
+
+// 모델 불러오기
+const db = require('./models');
 
 dotenv.config();
 
@@ -25,7 +25,7 @@ dotenv.config();
 const app = express();
 
 // 시퀄라이즈 실행
-sequelize.sync({ force: false })
+db.sequelize.sync()
 .then(() => {
     console.log('데이터베이스 연결 성공');
 })
@@ -38,17 +38,6 @@ passortConfig();
 
 // 포트 설정
 // app.set('port', 80);
-
-const sessionOption = {
-    resave: false,
-    saveUninitialized: false,
-    secret: process.env.COOKIE_SECRET,
-    cookie: { // 세션 ID 쿠키에 대한 설정 (만료기한, 시간 등..)
-        httpOnly: true,
-        secure: false,
-    },
-    domain: process.env.NODE_ENV === 'production' && '.chudevlog.com',
-}
 
 if (process.env.NODE_ENV === 'production') { // 배포 시
     // 로깅 미들웨어
@@ -83,7 +72,16 @@ app.use(express.urlencoded({ extended: true }));
 // header의 쿠키를 해석 및 req.cookies에서 확인할 수 있는 미들웨어
 app.use(cookieParser(process.env.COOKIE_SECRET));
 // session을 사용하기 위한 express 미들웨어
-app.use(session(sessionOption));
+app.use(session({
+    saveUninitialized: false,
+    resave: false,
+    secret: process.env.COOKIE_SECRET,
+    cookie: { // 세션 ID 쿠키에 대한 설정 (만료기한, 시간 등..)
+        httpOnly: true,
+        secure: false,
+    },
+    domain: process.env.NODE_ENV === 'production' && '.chudevlog.com',
+}));
 
 // express 기반 애플리케이션에서 패스포트를 초기화하는 미들웨어
 app.use(passport.initialize());
