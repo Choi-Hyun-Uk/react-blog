@@ -1,1 +1,1 @@
-export const backURL = 'http://13.125.233.242';
+export const backURL = 'http://api.chudevlog.com';

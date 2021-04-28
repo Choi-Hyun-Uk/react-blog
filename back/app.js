@@ -61,7 +61,7 @@ if (process.env.NODE_ENV === 'production') { // 배포 시
 
 // CORS 처리를 위한 미들웨어
 app.use(cors({
-    origin: 'chudevlog.com', // 브라우저에서 서버간 허용 주소
+    origin: 'http://chudevlog.com', // 브라우저에서 서버간 허용 주소
     credentials: true, // front, back 간 쿠키 전달 허용
 }));
 
