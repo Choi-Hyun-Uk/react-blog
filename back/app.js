@@ -85,15 +85,15 @@ app.use(passport.initialize());
 // 영구 로그인 세션을 사용하면 추가하는 미들웨어
 app.use(passport.session());
 
+app.get('/', (req, res) => {
+    res.send('80 포트 연결!');
+});
+
 // 라우터 설정
 app.use('/user', userRouter); // /user
 app.use('/auth', authRouter); // /auth
 app.use('/post', postRouter); // /post
 app.use('/posts', postsRouter); // /posts
-
-app.get('/', (req, res) => {
-    res.send('80 포트 연결!');
-});
 
 // 404 처리 미들웨어
 app.use((req, res, next) => {

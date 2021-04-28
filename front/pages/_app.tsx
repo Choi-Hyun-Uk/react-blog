@@ -1,9 +1,9 @@
-import React, { VFC } from 'react';
+import React, { FC } from 'react';
 import Head from 'next/head';
 import '../styles.css';
 import wrapper from '../store/configureStore';
 
-const App: VFC<any> = ({ Component, pageProps }) => {
+const App: FC<any> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
