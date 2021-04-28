@@ -62,8 +62,8 @@ router.post('/signup', async (req, res, next) => {
 // 로그인 상태 불러오기
 // GET /user/loadUser
 router.get('/loadUser', async (req, res, next) => {
+    console.log('user', req.user);
     try {
-        console.log('user', req.user);
         if (req.user) {
             const user = await User.findOne({
                 where: { id: req.user.id } 
