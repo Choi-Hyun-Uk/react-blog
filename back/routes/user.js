@@ -72,14 +72,16 @@ router.get('/loadUser', async (req, res, next) => {
                 where: { userId: user.id },
             });
             const fullUser = await User.findOne({
-                where: { id: user.id },
                 attributes: {
                     exclude: ['password'],
                 },
                 include: [{
                     model: Image,
-                    where: { id: imageId },
                 }],
+                where: {
+                    [`$users.id$`]: req.user.id,
+                    [`$images.id$`]: imageId,
+                },
             });
             return res.status(200).json(fullUser);
         } else {
