@@ -1,28 +1,29 @@
-const Sequelize = require('sequelize');
+const DataTypes = require('sequelize');
+const { Model } = DataTypes; 
 
-module.exports = class User extends Sequelize.Model {
+module.exports = class User extends Model {
     static init(sequelize) {
         return super.init({
             email: {
-                type: Sequelize.STRING(50),
+                type: DataTypes.STRING(50),
                 allowNull: true,
                 unique: true,
             },
             nickname: {
-                type: Sequelize.STRING(50),
+                type: DataTypes.STRING(50),
                 allowNull: false, // 필수 아님
             },
             password: {
-                type: Sequelize.STRING(100),
+                type: DataTypes.STRING(100),
                 allowNull: true,
             },
             provider: { // 어디서 가입했는지에 대한 출처
-                type: Sequelize.STRING(50),
+                type: DataTypes.STRING(50),
                 allowNull: false,
                 defaultValue: 'local', // 기본은 local, 공식사이트에서 가입
             },
             snsId: { // sns 가입 시 ID 저장
-                type: Sequelize.STRING(50),
+                type: DataTypes.STRING(50),
                 allowNull: true,
             },
         },{

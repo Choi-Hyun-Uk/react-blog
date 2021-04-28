@@ -1,14 +1,15 @@
-const Sequelize = require('sequelize');
+const DataTypes = require('sequelize');
+const { Model } = DataTypes; 
 
-module.exports = class Post extends Sequelize.Model {
+module.exports = class Post extends Model {
     static init(sequelize) {
         return super.init({
             title: {
-                type: Sequelize.STRING(100),
+                type: DataTypes.STRING(100),
                 allowNull: true,
             },
             content: {
-                type: Sequelize.TEXT,
+                type: DataTypes.TEXT,
                 allowNull: true,
             },
 

@@ -1,10 +1,11 @@
-const Sequelize = require('sequelize');
+const DataTypes = require('sequelize');
+const { Model } = DataTypes; 
 
-module.exports = class Comment extends Sequelize.Model {
+module.exports = class Comment extends Model {
     static init(sequelize) {
         return super.init({
             content: {
-                type: Sequelize.TEXT,
+                type: DataTypes.TEXT,
                 allowNull: false,
             },
 

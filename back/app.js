@@ -25,13 +25,11 @@ dotenv.config();
 const app = express();
 
 // 시퀄라이즈 실행
-db.sequelize.sync({ force: false })
-.then(() => {
-    console.log('데이터베이스 연결 성공');
-})
-.catch((err) => {
-    console.error(err);
-})
+db.sequelize.sync()
+  .then(() => {
+    console.log('db 연결 성공');
+  })
+  .catch(console.error);
 
 // 패스포트 js 실행
 passortConfig();

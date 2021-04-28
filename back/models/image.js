@@ -1,10 +1,11 @@
-const Sequelize = require('sequelize');
+const DataTypes = require('sequelize');
+const { Model } = DataTypes; 
 
-module.exports = class Image extends Sequelize.Model {
+module.exports = class Image extends Model {
     static init(sequelize) {
         return super.init({
             src: {
-                type: Sequelize.STRING(200),
+                type: DataTypes.STRING(200),
                 allowNull: false,
             },
             // belongsTo - UserId , PostId 임의로 생성
