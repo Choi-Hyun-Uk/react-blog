@@ -13,7 +13,7 @@ module.exports = () => {
     passport.deserializeUser( async (id, done) => { // DB에서 정보를 찾으면 req.user로 넣어준다.
         try {
             const user = await User.findOne({ where: { id }});
-            done(null, user); // done 시 callback
+            done(null, user); // done 시 callback , req.user로 로그인 사용자 확인 가능
         } catch(error) {
             console.error(error);
             done(error);
