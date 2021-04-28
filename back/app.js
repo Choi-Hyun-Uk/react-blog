@@ -78,7 +78,7 @@ app.use('/', express.static(path.join(__dirname, '/uploads/thumb')));
 // json - body 사용을 위한 미들웨어 (필수 장착)
 app.use(express.json());
 // urlencoded - form submit으로 전달받은 data를 사용하기 위한 미들웨어 (필수 장착)
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 // header의 쿠키를 해석 및 req.cookies에서 확인할 수 있는 미들웨어
 app.use(cookieParser(process.env.COOKIE_SECRET));
