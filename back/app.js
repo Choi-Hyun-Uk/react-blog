@@ -3,12 +3,12 @@ const session = require('express-session');
 const morgan = require('morgan');
 const cors = require('cors');
 const passport = require('passport');
-const passortConfig = require('./passport');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const helmet = require('helmet');
 const hpp = require('hpp');
 const dotenv = require('dotenv');
+const passortConfig = require('./passport');
 
 // 라우트 불러오기
 const userRouter = require('./routes/user');
@@ -73,14 +73,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 // session을 사용하기 위한 express 미들웨어
 app.use(session({
-    saveUninitialized: false,
-    resave: false,
-    secret: process.env.COOKIE_SECRET,
-    cookie: { // 세션 ID 쿠키에 대한 설정 (만료기한, 시간 등..)
-        httpOnly: true,
-        secure: false,
-    },
-    domain: process.env.NODE_ENV === 'production' && '.chudevlog.com',
+  saveUninitialized: false,
+  resave: false,
+  secret: process.env.COOKIE_SECRET,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+    domain: process.env.NODE_ENV === 'production' && '.chudevlog.com'
+  },
 }));
 
 // express 기반 애플리케이션에서 패스포트를 초기화하는 미들웨어
