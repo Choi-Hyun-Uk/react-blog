@@ -55,16 +55,20 @@ if (process.env.NODE_ENV === 'production') { // 배포 시
     app.use(morgan('combined'));
     app.use(helmet());
     app.use(hpp());
+    // CORS 처리를 위한 미들웨어 - 배포용
+    app.use(cors({
+        origin: 'http://chudevlog.com', // 브라우저에서 서버간 허용 주소
+        credentials: true, // front, back 간 쿠키 전달 허용
+    }));
 } else {
     // 로깅 미들웨어
     app.use(morgan('dev'));
+    // CORS 처리를 위한 미들웨어 - 개발용
+    app.use(cors({
+        origin: true, // 브라우저에서 서버간 허용 주소
+        credentials: true, // front, back 간 쿠키 전달 허용
+    }));
 }
-
-// CORS 처리를 위한 미들웨어
-app.use(cors({
-    origin: 'http://chudevlog.com', // 브라우저에서 서버간 허용 주소
-    credentials: true, // front, back 간 쿠키 전달 허용
-}));
 
 // path.join을 사용할 경우 OS 체제에 맞게 별도로 경로를 설정하지 않아도 된다
 // 정적파일 제공 시 - express.static
