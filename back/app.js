@@ -47,6 +47,7 @@ const sessionOption = {
         httpOnly: true,
         secure: false,
     },
+    domain: process.env.NODE_ENV === 'production' && '.chudevlog.com',
 }
 
 if (process.env.NODE_ENV === 'production') { // 배포 시
