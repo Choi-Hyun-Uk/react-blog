@@ -70,17 +70,26 @@ router.get('/loadUser', async (req, res, next) => {
             });
             // id가 최대값인 image 가져오기
             const image = await Image.max('id', {
-                where: { userId: user.id },
+                where: { userId: req.user.id },
             });
+            if (image) {
+                const fullUser = await User.findOne({
+                    where: { id: user.id },
+                    attributes: {
+                        exclude: ['password'],
+                    },
+                    include: [{
+                        model: Image,
+                        where: { id: image },
+                    }],
+                });
+                return res.status(200).json(fullUser);
+            }
             const fullUser = await User.findOne({
                 where: { id: user.id },
                 attributes: {
                     exclude: ['password'],
                 },
-                include: [{
-                    model: Image,
-                    where: { id: image },
-                }],
             });
             return res.status(200).json(fullUser);
         } else {
