@@ -38,10 +38,10 @@ router.get('/logout', (req, res) => {
     // req.logOut();
     // req.session.destroy();
     // res.send('로그아웃');
-    req.session.destroy(function () {
+    req.session.destroy(() => {
         req.logout();
-        res.redirect('/');              
-    });
+        res.redirect('/'); 
+    })
 });
 
 

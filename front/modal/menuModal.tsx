@@ -1,20 +1,17 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { MenuBox } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'actions/user';
 import { RootState } from 'slices';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const Modal = ({ show }) => {
   const id = useSelector((state: RootState) => state.user.user?.id);
   const nickname = useSelector((state: RootState) => state.user.user?.nickname);
-  const router = useRouter();
   const dispatch = useDispatch();
 
   const onClickLogout = useCallback(() => {
     dispatch(logOut());
-    router.replace('/');
   }, [dispatch]);
 
   // show가 false면 화면에 메뉴를 나타내지 않는다.
