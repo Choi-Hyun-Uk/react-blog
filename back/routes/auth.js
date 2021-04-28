@@ -33,11 +33,15 @@ router.post('/login', async (req, res, next) => {
     })(req, res, next);
 });
 
-// 로그아웃 - POST /auth/logout
-router.post('/logout', (req, res) => {
-    req.logOut();
-    req.session.destroy();
-    res.send('로그아웃');
+// 로그아웃 - GET /auth/logout
+router.get('/logout', (req, res) => {
+    // req.logOut();
+    // req.session.destroy();
+    // res.send('로그아웃');
+    req.session.destroy(function () {
+        req.logout();
+        res.redirect('/');              
+    });
 });
 
 

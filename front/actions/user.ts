@@ -42,7 +42,7 @@ export const logIn = createAsyncThunk('/logIn', async (data: User, { rejectWithV
 
 // 로그아웃
 export const logOut = createAsyncThunk('/logOut', async () => {
-  const response = await axios.post('/auth/logout');
+  const response = await axios.get('/auth/logout');
   return response.data;
 });
 
