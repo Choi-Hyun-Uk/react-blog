@@ -7,18 +7,20 @@ import wrapper from 'store/configureStore';
 import axios from 'axios';
 import { loadUser } from 'actions/user';
 import { GetServerSideProps } from 'next';
+import Header from 'components/header';
 
 const LogIn = () => {
   const { user, isLoginDone } = useSelector((state: RootState) => state.user);
 
-  useEffect(() => {
-    if (user && isLoginDone) {
-      Router.push('/');
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user && isLoginDone) {
+  //     Router.push('/');
+  //   }
+  // }, [user]);
 
   return (
     <>
+      <Header />
       <LoginForm />
     </>
   );
