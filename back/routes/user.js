@@ -71,19 +71,26 @@ router.get('/loadUser', async (req, res, next) => {
             const imageId = await Image.max('id', {
                 where: { userId: user.id },
             });
+            if (imageId) {
+                const fullImageUser = await User.findOne({
+                    where: { id: user.id },
+                    attributes: {
+                        exclude: ['password'],
+                    },
+                    include: [{
+                        model: Image,
+                        where: { id: imageId },
+                    }],
+                });
+                return res.status(200).json(fullImageUser);
+            }
             const fullUser = await User.findOne({
+                where: { id: user.id },
                 attributes: {
                     exclude: ['password'],
                 },
-                include: [{
-                    model: Image,
-                }],
-                where: {
-                    [`$users.id$`]: req.user.id,
-                    [`$images.id$`]: imageId,
-                },
             });
-            return res.status(200).json(fullUser);
+            res.status(200).json(fullUser);
         } else {
             console.log('로그인을 해주세요.');
             res.status(200).json(null);
