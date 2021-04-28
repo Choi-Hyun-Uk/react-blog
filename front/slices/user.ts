@@ -52,11 +52,10 @@ const userSlice = createSlice({
       // 로그인 상태 불러오기
       .addCase(loadUser.pending, (state, action) => {})
       .addCase(loadUser.fulfilled, (state, action) => {
-        console.log('로그인 상태 slice');
         state.user = action.payload;
-        // if (action.payload !== null) {
-        //   state.isLoggedIn = true;
-        // }
+        if (action.payload !== null) {
+          state.isLoggedIn = true;
+        }
       })
       .addCase(loadUser.rejected, (state, action) => {
         state.isLoginError = action.payload;
