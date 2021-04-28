@@ -25,7 +25,7 @@ dotenv.config();
 const app = express();
 
 // 시퀄라이즈 실행
-db.sequelize.sync({ force: true })
+db.sequelize.sync({ force: false })
 .then(() => {
     console.log('데이터베이스 연결 성공');
 })

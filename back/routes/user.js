@@ -82,7 +82,7 @@ router.get('/loadUser', async (req, res, next) => {
                     where: { id: image },
                 }],
             });
-            res.status(200).json(fullUser);
+            return res.status(200).json(fullUser);
         } else {
             console.log('로그인을 해주세요.');
             res.status(200).json(null);

@@ -80,7 +80,6 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
                 model: Image,
             }],
         });
-        
         res.status(201).json(fullPost);
     } catch(error) {
         console.error(error);
