@@ -26,7 +26,7 @@ const LogIn = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
+export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
   const cookie = context.req ? context.req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';
   // 쿠키가 브라우저에 있는경우만 넣어서 실행

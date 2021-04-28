@@ -29,8 +29,7 @@ const Search = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
-  console.log(context.store.getState());
+export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
   const cookie = context.req ? context.req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';
   // 쿠키가 브라우저에 있는경우만 넣어서 실행

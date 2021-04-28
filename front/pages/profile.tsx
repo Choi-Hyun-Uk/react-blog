@@ -15,7 +15,7 @@ const Profile = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context) => {
+export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
   console.log(context.store.getState());
   const cookie = context.req ? context.req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';
