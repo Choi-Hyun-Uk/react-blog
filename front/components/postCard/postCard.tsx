@@ -15,9 +15,7 @@ const PostCard = () => {
             <PostCardLayout key={item.id} item={item} />
           ))}
         </>
-      ) : (
-        <div>포스트가 없습니다.</div>
-      )}
+      ) : null}
     </PostWrapper>
   );
 };

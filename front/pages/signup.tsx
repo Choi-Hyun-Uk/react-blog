@@ -3,7 +3,6 @@ import SignupForm from 'components/signupForm';
 import wrapper from 'store/configureStore';
 import { loadUser } from 'actions/user';
 import axios from 'axios';
-import { GetServerSideProps } from 'next';
 
 const Signup = () => {
   return <SignupForm />;

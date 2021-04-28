@@ -12,11 +12,11 @@ import Header from 'components/header';
 const LogIn = () => {
   const { user, isLoginDone } = useSelector((state: RootState) => state.user);
 
-  // useEffect(() => {
-  //   if (user && isLoginDone) {
-  //     Router.push('/');
-  //   }
-  // }, [user]);
+  useEffect(() => {
+    if (user && isLoginDone) {
+      Router.push('/');
+    }
+  }, [user]);
 
   return (
     <>

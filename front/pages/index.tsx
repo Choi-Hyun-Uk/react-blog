@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import wrapper from 'store/configureStore';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'slices';
 import { throttle } from 'lodash';
-import { GetServerSideProps } from 'next';
 
 import HeaderForm from 'components/header';
 import PostCard from 'components/postCard/postCard';

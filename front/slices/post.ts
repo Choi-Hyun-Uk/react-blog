@@ -38,6 +38,7 @@ const initialState = {
   addPostDone: false,
   addPostError: null,
   updatePostLoading: false,
+  updatePostDone: false,
   likePostLoading: false,
   notMyLoadPost: false,
   addCommentLoading: false,
@@ -57,8 +58,8 @@ const postSlice = createSlice({
       .addCase(addPost.fulfilled, (state, { payload }: any) => {
         state.posts.unshift(payload);
         state.imagePaths = [];
-        const lastId = state.posts[state.posts.length - 1];
-        state.posts = state.posts.filter((v) => v.id !== lastId.id);
+        // const lastId = state.posts[state.posts.length - 1];
+        // state.posts = state.posts.filter((v) => v.id !== lastId.id);
       })
       .addCase(addPost.rejected, (state, action) => {
         state.addPostError = action.payload;
@@ -74,15 +75,19 @@ const postSlice = createSlice({
       })
       // 포스트 수정
       .addCase(editPost.pending, (state, action) => {
+        state.updatePostDone = false;
         state.updatePostLoading = true;
       })
       .addCase(editPost.fulfilled, (state, { payload }: any) => {
         state.singlePost.title = payload.title;
         state.singlePost.content = payload.content;
         state.singlePost.Images.push(payload.image);
+        state.updatePostDone = true;
         state.updatePostLoading = false;
       })
-      .addCase(editPost.rejected, (state, action) => {})
+      .addCase(editPost.rejected, (state, action) => {
+        state.updatePostLoading = false;
+      })
 
       // 포스트 불러오기
       .addCase(postsLoad.pending, (state, action) => {
@@ -90,7 +95,8 @@ const postSlice = createSlice({
       })
       .addCase(postsLoad.fulfilled, (state, { payload }: any) => {
         state.posts = _concat(state.posts, payload);
-        state.loadPostsMore = payload.length === 9; // false 처리
+        // 마지막 포스트가 0 혹은 9보다 아래면 false 처리하여, 더 이상 불러오지 못하게 막음
+        state.loadPostsMore = payload.length === 9;
         state.loadPostsLoading = false;
       })
       .addCase(postsLoad.rejected, (state, action) => {

@@ -34,9 +34,6 @@ db.sequelize.sync()
 // 패스포트 js 실행
 passortConfig();
 
-// 포트 설정
-// app.set('port', 80);
-
 if (process.env.NODE_ENV === 'production') { // 배포 시
     // 로깅 미들웨어
     app.use(morgan('combined'));
@@ -62,14 +59,14 @@ if (process.env.NODE_ENV === 'production') { // 배포 시
 // console.log('경로' ,path.join(__dirname), 'uploads');
 app.use('/', express.static(path.join(__dirname, '/uploads')));
 app.use('/', express.static(path.join(__dirname, '/uploads/thumb')));
-// // json - body 사용을 위한 미들웨어 (필수 장착)
-// app.use(express.json());
-// // urlencoded - form submit으로 전달받은 data를 사용하기 위한 미들웨어 (필수 장착)
-// app.use(express.urlencoded({ extended: true }));
-
+// json - body 사용을 위한 미들웨어 (필수 장착)
 app.use(express.json());
+// urlencoded - form submit으로 전달받은 data를 사용하기 위한 미들웨어 (필수 장착)
 app.use(express.urlencoded({ extended: true }));
+
+// header의 쿠키를 해석 및 req.cookies에서 확인할 수 있는 미들웨어
 app.use(cookieParser(process.env.COOKIE_SECRET));
+// session을 사용하기 위한 express 미들웨어
 app.use(session({
   saveUninitialized: false,
   resave: false,
@@ -80,27 +77,11 @@ app.use(session({
     domain: process.env.NODE_ENV === 'production' && '.chudevlog.com'
   },
 }));
+
+// express 기반 애플리케이션에서 패스포트를 초기화하는 미들웨어
 app.use(passport.initialize());
+// 영구 로그인 세션을 사용하면 추가하는 미들웨어
 app.use(passport.session());
-
-// // header의 쿠키를 해석 및 req.cookies에서 확인할 수 있는 미들웨어
-// app.use(cookieParser(process.env.COOKIE_SECRET));
-// // session을 사용하기 위한 express 미들웨어
-// app.use(session({
-//   saveUninitialized: false,
-//   resave: false,
-//   secret: process.env.COOKIE_SECRET,
-//   cookie: {
-//     httpOnly: true,
-//     secure: false,
-//     domain: process.env.NODE_ENV === 'production' && '.chudevlog.com'
-//   },
-// }));
-
-// // express 기반 애플리케이션에서 패스포트를 초기화하는 미들웨어
-// app.use(passport.initialize());
-// // 영구 로그인 세션을 사용하면 추가하는 미들웨어
-// app.use(passport.session());
 
 app.get('/', (req, res) => {
     res.send('80 포트 연결!');

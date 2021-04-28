@@ -8,7 +8,6 @@ import { SearchPostCardWrapper } from '../styles/styles';
 import wrapper from 'store/configureStore';
 import axios from 'axios';
 import { loadUser } from 'actions/user';
-import { GetServerSideProps } from 'next';
 
 const Search = () => {
   const { searchPosts } = useSelector((state: RootState) => state.post);

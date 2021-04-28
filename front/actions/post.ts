@@ -46,7 +46,6 @@ export interface Key {
 // 게시글 작성하기
 export const addPost = createAsyncThunk('/post/add', async (data: FormData, { rejectWithValue }) => {
   try {
-    console.log(data);
     const response = await axios.post('/post', data);
     return response.data;
   } catch (error) {

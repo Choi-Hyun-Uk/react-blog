@@ -23,7 +23,7 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
   const [edit, setEdit] = useState(true);
   const [title, setTitle] = useState(post.title);
   const [content, setContent] = useState(post.content);
-  const updateLoading = useSelector((state: RootState) => state.post.updatePostLoading);
+  const { updateLoading, updatePostDone } = useSelector((state: RootState) => state.post);
   const date = dayjs(post.createdAt);
   const postUser = post.User.id; // 포스트 작성자 id
   const dispatch = useDispatch();
@@ -41,10 +41,10 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
 
   // 수정 완료 시 UX를 위함 함수
   useEffect(() => {
-    if (!updateLoading) {
+    if (!updateLoading && updatePostDone) {
       setEdit(true);
     }
-  }, [updateLoading]);
+  }, [updateLoading, updatePostDone]);
 
   const onEditCancle = useCallback(() => {
     setEdit(true);

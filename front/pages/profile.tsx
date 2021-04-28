@@ -4,7 +4,6 @@ import wrapper from 'store/configureStore';
 import axios from 'axios';
 import { loadUser } from 'actions/user';
 import UserProfile from 'components/userProfile';
-import { GetServerSideProps } from 'next';
 
 const Profile = () => {
   return (

@@ -6,7 +6,6 @@ import SinglePostContent from 'components/singlepost/singlePost';
 import { singlePostLoad } from '../../actions/post';
 import wrapper from 'store/configureStore';
 import { loadUser } from 'actions/user';
-import { GetServerSideProps } from 'next';
 
 const Post = () => {
   return (

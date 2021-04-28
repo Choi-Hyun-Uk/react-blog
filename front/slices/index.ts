@@ -1,53 +1,28 @@
-// import { combineReducers } from 'redux';
-// import { HYDRATE } from 'next-redux-wrapper';
-
-// import userSlice from './user';
-// import postSlice from './post';
-
-// const rootReducer = (state: any, action: any) => {
-//   switch (action.type) {
-//     case HYDRATE:
-//       console.log('HYDRATE', action);
-//       return action.payload;
-//     default: {
-//       const combineReducer = combineReducers({
-//         user: userSlice.reducer,
-//         post: postSlice.reducer,
-//       });
-//       return combineReducer(state, action);
-//     }
-//   }
-// };
-
-// // const rootReducer = combineReducers({
-// //   user: user.reducer,
-// //   post: post.reducer,
-// // });
-
-// export type RootState = ReturnType<typeof rootReducer>;
-
-// export default rootReducer;
-
 import { combineReducers } from 'redux';
 import { HYDRATE } from 'next-redux-wrapper';
 
 import userSlice from './user';
 import postSlice from './post';
 
-// (이전상태, 액션) => 다음상태
-const rootReducer = (state, action) => {
+const rootReducer = (state: any, action: any) => {
   switch (action.type) {
     case HYDRATE:
+      console.log('HYDRATE', action);
       return action.payload;
     default: {
-      const combinedReducer = combineReducers({
+      const combineReducer = combineReducers({
         user: userSlice.reducer,
         post: postSlice.reducer,
       });
-      return combinedReducer(state, action);
+      return combineReducer(state, action);
     }
   }
 };
+
+// const rootReducer = combineReducers({
+//   user: user.reducer,
+//   post: post.reducer,
+// });
 
 export type RootState = ReturnType<typeof rootReducer>;
 
