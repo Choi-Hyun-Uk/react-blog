@@ -42,7 +42,8 @@ export const logIn = createAsyncThunk('/logIn', async (data: User, { rejectWithV
 
 // 로그아웃
 export const logOut = createAsyncThunk('/logOut', async () => {
-  await axios.post('/auth/logOut');
+  const response = await axios.post('/auth/logout');
+  return response.data;
 });
 
 // 로그인 상태 불러오기

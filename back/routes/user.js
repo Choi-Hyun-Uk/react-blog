@@ -62,14 +62,13 @@ router.post('/signup', async (req, res, next) => {
 // 로그인 상태 불러오기
 // GET /user/loadUser
 router.get('/loadUser', async (req, res, next) => {
-    console.log('user', req.user);
     try {
         if (req.user) {
             const user = await User.findOne({
                 where: { id: req.user.id } 
             });
-            // id가 최대값인 image 가져오기
-            const image = await Image.max('id', {
+            // image 중 user의 id와 맞는 image의 최대 id값 image 가져오기
+            const imageId = await Image.max('id', {
                 where: { userId: user.id },
             });
             const fullUser = await User.findOne({
@@ -79,29 +78,10 @@ router.get('/loadUser', async (req, res, next) => {
                 },
                 include: [{
                     model: Image,
-                    where: { id: image },
+                    where: { id: imageId },
                 }],
             });
             return res.status(200).json(fullUser);
-            // if (image) {
-            //     const fullUser = await User.findOne({
-            //         where: { id: user.id },
-            //         attributes: {
-            //             exclude: ['password'],
-            //         },
-            //         include: [{
-            //             model: Image,
-            //             where: { id: image },
-            //         }],
-            //     });
-            //     return res.status(200).json(fullUser);
-            // }
-            // const fullUser = await User.findOne({
-            //     where: { id: user.id },
-            //     attributes: {
-            //         exclude: ['password'],
-            //     },
-            // });
         } else {
             console.log('로그인을 해주세요.');
             res.status(200).json(null);
