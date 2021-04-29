@@ -44,7 +44,7 @@ const MyPostCard = ({ post }) => {
         <div className="post-desc">
           {post.Images?.length > 0 && (
             <div className="image">
-              <img src={post.User.Images[0].src} />
+              <img src={post.Images[0].src} />
             </div>
           )}
           <p>{post.content}</p>
