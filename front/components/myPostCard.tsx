@@ -22,7 +22,7 @@ const MyPostCard = ({ post }) => {
                 pathname: '/[pagename]/[id]',
                 query: { pageId: `${post.id}`, type: 'myBlog' },
               }}
-              as={`/${post.User.nickname}/${encodeURIComponent(title)}`}
+              as={`/${post.User.nickname}/${title}`}
             >
               <a>
                 <div>{post.title}</div>
@@ -31,10 +31,14 @@ const MyPostCard = ({ post }) => {
           </h1>
         </div>
         <div className="user-info">
-          {post.User?.Images?.length > 0 && (
-            <div>
-              <img src={`${backURL}/${post.User.Images[0].src}`} />
-            </div>
+          {post.User.Images && (
+            <>
+              {post.User.Images.length > 0 && (
+                <div>
+                  <img src={`${backURL}/${post.User.Images[0].src}`} />
+                </div>
+              )}
+            </>
           )}
           <p>{post.User.nickname}</p>
         </div>

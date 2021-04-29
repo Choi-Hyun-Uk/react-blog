@@ -22,7 +22,7 @@ const MyPost = () => {
   console.log(pagename);
 
   // 현재 로드된 포스트들의 마지막 포스트의 id값
-  const lastId = post[post.length - 1]?.id;
+  const lastId = post[post?.length - 1]?.id;
 
   // 인피니트 스크롤링하기
   useEffect(() => {
