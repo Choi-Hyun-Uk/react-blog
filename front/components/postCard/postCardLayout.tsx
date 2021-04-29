@@ -16,7 +16,7 @@ const PostCardLayout = ({ item }) => {
     <PostLayout>
       {item.Images.length > 0 ? (
         <div className="thumb">
-          <img src={item.User.Images[0].src} />
+          <img src={item.Images[0].src} />
           {item.Images.length > 1 && <div>+ {item.Images.length}</div>}
         </div>
       ) : null}
