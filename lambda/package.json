@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.895.0",
     "sharp": "^0.28.1"

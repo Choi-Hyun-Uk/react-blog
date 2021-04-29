@@ -82,7 +82,7 @@ const WriteForm = () => {
               {imagePaths.length > 0 && (
                 <ul>
                   {imagePaths.map((item, v) => (
-                    <Images key={v} filename={item} />
+                    <Images key={v} filename={item.replace(/\/thumb\//, '/original/')} />
                   ))}
                 </ul>
               )}
