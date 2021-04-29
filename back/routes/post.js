@@ -259,11 +259,11 @@ router.delete('/:postId/comment/:commentId', isLoggedIn, async (req, res, next) 
 });
 
 // 유저 게시글 페이지 불러오기 - GET /post/user/1
-router.get('/user/:nickname', async (req, res, next) => {
+router.get(':nickname', async (req, res, next) => {
     try {
         console.log(req.params);
         const user = await User.findOne({
-            where: { nickname: req.params.nickname },
+            where: { nickname: decodeURIComponent(req.params.nickname) },
         });
         if (!user) {
             return res.status(400).send('존재하지 않는 계정입니다.');
@@ -277,9 +277,7 @@ router.get('/user/:nickname', async (req, res, next) => {
             // 마지막 포스트의 id값 보다 작은 포스트를 불러오기
             where.id = { [Op.lt]: parseInt(req.query.last, 10) };
         }
-
-        console.log(where);
-
+        
         // 프로필 이미지 - id가 최대값인 image 가져오기
         const image = await Image.max('id', {
             where: { userId: user.id },

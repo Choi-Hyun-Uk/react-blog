@@ -133,7 +133,7 @@ export const deleteComment = createAsyncThunk('/post/comment/delete', async (dat
 // 내 포스트만 불러오기
 export const myPostLoad = createAsyncThunk('/post/myPostLoad', async (data: User, { rejectWithValue }) => {
   try {
-    const response = await axios.get(`/post/user/${encodeURIComponent(data.nickname)}/?last=${data.lastId || 0}`);
+    const response = await axios.get(`/post/${encodeURIComponent(data.nickname)}/?last=${data.lastId || 0}`);
     return response.data;
   } catch (error) {
     return rejectWithValue(error.response.data);

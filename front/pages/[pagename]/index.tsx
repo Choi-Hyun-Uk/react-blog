@@ -19,6 +19,8 @@ const MyPost = () => {
   const { loadMyPostsMore, loadMyPostsLoading } = useSelector((state: RootState) => state.post);
   const dispatch = useDispatch();
 
+  console.log(pagename);
+
   // 현재 로드된 포스트들의 마지막 포스트의 id값
   const lastId = post[post.length - 1]?.id;
 
