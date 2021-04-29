@@ -73,7 +73,7 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
     axios.defaults.headers.Cookie = cookie;
   }
 
-  console.log(context.params.pagename);
+  console.log('pagename', context.params.pagename);
 
   await context.store.dispatch(loadUser());
   await context.store.dispatch(
