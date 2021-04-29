@@ -79,6 +79,7 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
   await context.store.dispatch(
     myPostLoad({
       nickname: context.params.pagename.toString(),
+      lastId: 0,
     }),
   );
 });

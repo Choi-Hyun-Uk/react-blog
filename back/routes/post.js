@@ -261,7 +261,6 @@ router.delete('/:postId/comment/:commentId', isLoggedIn, async (req, res, next) 
 // 유저 게시글 페이지 불러오기 - GET /post/nickname
 router.get('/:nickname', async (req, res, next) => {
     try {
-        console.log(req.params);
         const user = await User.findOne({
             where: { nickname: decodeURIComponent(req.params.nickname) },
         });
@@ -283,6 +282,37 @@ router.get('/:nickname', async (req, res, next) => {
             where: { userId: user.id },
         });
 
+        if (image) {
+            const fullPost = await Post.findAll({
+                where,
+                order: [
+                    ['createdAt', 'DESC'], // 기본값은 'ASC' 오름차순
+                    [Comment, 'createdAt', 'DESC'],
+                ],
+                limit: 5,
+                include: [{
+                    model: User,
+                    attributes: ['id', 'nickname'],
+                    include: [{
+                        model: Image,
+                        where: { id: image },
+                    }],
+                }, {
+                    model: Comment,
+                    include: [{
+                        model: User,
+                        attributes: ['id', 'nickname'],
+                    }],
+                }, {
+                    model: User,
+                    as: 'Likers',
+                    attributes: ['id'],
+                }, {
+                    model: Image,
+                }],
+            });
+            return res.status(200).json(fullPost);
+        }
         const post = await Post.findAll({
             where,
             order: [
@@ -293,10 +323,6 @@ router.get('/:nickname', async (req, res, next) => {
             include: [{
                 model: User,
                 attributes: ['id', 'nickname'],
-                include: [{
-                    model: Image,
-                    where: { id: image },
-                }],
             }, {
                 model: Comment,
                 include: [{
