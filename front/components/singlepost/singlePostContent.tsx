@@ -13,7 +13,6 @@ import EditPostForm from './editPostForm';
 import Link from 'next/link';
 import PrevArrow from './prevArrow';
 import NextArrow from './nextArrow';
-import { backURL } from '../../config/config';
 
 const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
   const post = useSelector((state: RootState) => state.post.singlePost);
@@ -136,7 +135,7 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
               <div className="user-info">
                 {post.User.Images.length > 0 && (
                   <div>
-                    <img src={`${backURL}/${post.User.Images[0].src}`} />
+                    <img src={post.User.Images[0].src} />
                   </div>
                 )}
                 <Link
@@ -160,7 +159,7 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
             <Slider {...settings}>
               {post.Images.map((v) => (
                 <div key={v.id} className="thumb-img">
-                  <img key={v.id} src={`${backURL}/${v.src}`} />
+                  <img key={v.id} src={v.src} />
                 </div>
               ))}
             </Slider>

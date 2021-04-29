@@ -3,7 +3,6 @@ import { HiHeart } from 'react-icons/hi';
 import { PostLayout } from './styles';
 import dayjs from 'dayjs';
 import Link from 'next/link';
-import { backURL } from '../../config/config';
 
 const PostCardLayout = ({ item }) => {
   const date = dayjs(item.createdAt);
@@ -17,7 +16,7 @@ const PostCardLayout = ({ item }) => {
     <PostLayout>
       {item.Images.length > 0 ? (
         <div className="thumb">
-          <img src={`${backURL}/${item.Images[0].src}`} />
+          <img src={item.User.Images[0].src} />
           {item.Images.length > 1 && <div>+ {item.Images.length}</div>}
         </div>
       ) : null}
@@ -36,7 +35,7 @@ const PostCardLayout = ({ item }) => {
           <p className="user-info">
             {item.User.Images.length > 0 && (
               <span>
-                <img src={`${backURL}/${item.User.Images[0].src}`} />
+                <img src={item.User.Images[0].src} />
               </span>
             )}
             {item.User.nickname}

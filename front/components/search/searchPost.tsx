@@ -3,7 +3,6 @@ import Link from 'next/link';
 import dayjs from 'dayjs';
 
 import { SearchPostCard } from './styles';
-import { backURL } from '../../config/config';
 
 const SearchPost = ({ post }) => {
   const date = dayjs(post.createdAt);
@@ -34,7 +33,7 @@ const SearchPost = ({ post }) => {
         <div className="user-info">
           {post.User.Images.length > 0 && (
             <div>
-              <img src={`${backURL}/${post.User.Images[0].src}`} />
+              <img src={post.User.Images[0].src} />
             </div>
           )}
           <p>{post.User.nickname}</p>
@@ -42,7 +41,7 @@ const SearchPost = ({ post }) => {
         <div className="post-desc">
           {post.Images.length > 0 && (
             <div className="image">
-              <img src={`${backURL}/${post.Images[0].src}`} />
+              <img src={post.User.Images[0].src} />
             </div>
           )}
           <p>{post.content}</p>

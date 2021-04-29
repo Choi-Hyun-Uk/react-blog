@@ -79,7 +79,7 @@ const Comments = ({ item }) => {
           <div className="user-info">
             {item.User.Images.length > 0 && (
               <div>
-                <img src={`${backURL}/${item.User.Images[0].src}`} />
+                <img src={item.User.Images[0].src} />
               </div>
             )}
             <h1>{item.User.nickname}</h1>
@@ -92,7 +92,7 @@ const Comments = ({ item }) => {
           <div className="user-info">
             {item.User.Images.length > 0 && (
               <div>
-                <img src={`${backURL}/${item.User.Images[0].src}`} />
+                <img src={item.User.Images[0].src} />
               </div>
             )}
             <h1>{item.User.nickname}</h1>

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { uploadImages, removeImage } from '../../actions/post';
 import { RootState } from 'slices';
 import dayjs from 'dayjs';
-import { backURL } from '../../config/config';
 
 const EditPostForm = ({
   onEditCancle,
@@ -62,7 +61,7 @@ const EditPostForm = ({
           <div className="user-info">
             {post.User.Images.length > 0 && (
               <div>
-                <img src={`${backURL}/${post.User.Images[0].src}`} />
+                <img src={post.User.Images[0].src} />
               </div>
             )}
             <p>{post.User.nickname}</p>
@@ -82,7 +81,7 @@ const EditPostForm = ({
                 <button type="button" className="remove-btn" onClick={onRemoveImage(v.id)}>
                   <RiAddFill />
                 </button>
-                <img src={`${backURL}/${v.src}`} />
+                <img src={v.src} />
               </div>
             ))}
           </>
@@ -91,7 +90,7 @@ const EditPostForm = ({
           <div className="add-img-preview">
             {imagePaths.map((item, i) => (
               <div key={i}>
-                <img src={`${backURL}/${item}`} alt={item} />
+                <img src={item} alt={item} />
               </div>
             ))}
           </div>

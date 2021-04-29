@@ -6,7 +6,6 @@ import Router from 'next/router';
 import wrapper from 'store/configureStore';
 import axios from 'axios';
 import { loadUser } from 'actions/user';
-import { GetServerSideProps } from 'next';
 import Header from 'components/header';
 
 const LogIn = () => {

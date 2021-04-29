@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback } from 'react';
 import { ProfileFormBox } from './styles';
 import { RiEdit2Line, RiCheckFill, RiCloseFill } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
