@@ -40,11 +40,11 @@ const Comments = ({ item }) => {
   const onDeleteComment = useCallback(() => {
     dispatch(
       deleteComment({
-        postId: item.postId,
+        postId: item.PostId,
         id: item.id,
       }),
     );
-  }, [item.postId, item.id]);
+  }, [item.PostId, item.id]);
 
   // 댓글 수정 모드 변경
   const onCommentEditMode = useCallback(() => {
@@ -65,12 +65,12 @@ const Comments = ({ item }) => {
     }
     dispatch(
       editComment({
-        postId: item.postId,
+        postId: item.PostId,
         commentId: item.id,
         content: contentValue,
       }),
     );
-  }, [item.postId, item.id, contentValue]);
+  }, [item.PostId, item.id, contentValue]);
 
   return (
     <CommentList>
