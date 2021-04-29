@@ -5,7 +5,7 @@ module.exports = class Image extends Model {
     static init(sequelize) {
         return super.init({
             src: {
-                type: DataTypes.STRING(200),
+                type: DataTypes.TEXT(),
                 allowNull: false,
             },
             // belongsTo - UserId , PostId 임의로 생성
