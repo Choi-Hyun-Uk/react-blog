@@ -258,7 +258,7 @@ router.delete('/:postId/comment/:commentId', isLoggedIn, async (req, res, next) 
     }
 });
 
-// 유저 게시글 페이지 불러오기 - GET /post/user/1
+// 유저 게시글 페이지 불러오기 - GET /post/nickname
 router.get(':nickname', async (req, res, next) => {
     try {
         console.log(req.params);
