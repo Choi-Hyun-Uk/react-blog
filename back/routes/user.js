@@ -5,6 +5,8 @@ const multer = require('multer');
 const { User, Image } = require('../models');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const bcrypt = require('bcrypt');
+const multerS3 = require('multer-s3');
+const AWS = require('aws-sdk');
 
 const router = express.Router();
 
@@ -15,16 +17,19 @@ try {
     fs.mkdirSync('uploads/thumb'); // 없으면 생성
 }
 
+AWS.config.update({
+    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+    region: 'ap-northeast-2',
+});
+
 // 이미지 업로드 설정
 const upload = multer({
-    storage: multer.diskStorage({ // 하드디스크에 저장
-        destination(req, file, done) {
-            done(null, 'uploads/thumb'); // uploads 폴더에 저장
-        },
-        filename(req, file, done) {
-            const ext = path.extname(file.originalname); // 파일 확장자 추출
-            const basename = path.basename(file.originalname, ext).normalize(); // 파일 이름 추출
-            done(null, basename + '_' + new Date().getTime() + ext); // 이름 + 시간 + 확장자
+    storage: multerS3({
+        s3: new AWS.S3(),
+        bucket: 'react-blog-S3',
+        key(req, file, cd) {
+            cd(null, `original/${Date.now()}_${path.basename(file.originalname)}`);
         },
     }),
     limits: { filesize: 20 * 1024 * 1024 }, // 20MB 제한
@@ -153,7 +158,7 @@ router.post('/image', isLoggedIn, upload.single('image'), async (req, res, next)
     // req.files - array
     // req.file - single
     console.log(req.file);
-    res.json(req.file.filename);
+    res.json(req.file.location);
 });
 
 module.exports = router;
