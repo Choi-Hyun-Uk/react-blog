@@ -19,9 +19,9 @@ const MyPostCard = ({ post }) => {
             <Link
               href={{
                 pathname: '/[pagename]/[id]',
-                query: { pageId: `${post.id}`, type: 'myBlog' },
+                query: { pageId: `${post.id}` },
               }}
-              as={post.User.Images[0].src}
+              as={`/${post.User.nickname}/${title}`}
             >
               <a>
                 <div>{post.title}</div>
