@@ -5,7 +5,7 @@ const sharp = require('sharp');
 const s3 = new AWS.S3();
 
 // event - S3에서 작업 진행 
-exports.handler = (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
     const Bucket = event.Records[0].s3.bucket.name; // 개인 버켓 이름
     const Key = decodeURIComponent(event.Records[0].s3.object.key);
     console.log(Bucket, key);
