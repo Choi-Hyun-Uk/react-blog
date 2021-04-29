@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'actions/user';
 import { RootState } from 'slices';
 import Link from 'next/link';
+import Router from 'next/router';
 
 const Modal = ({ show }) => {
   const id = useSelector((state: RootState) => state.user.user?.id);
@@ -12,6 +13,7 @@ const Modal = ({ show }) => {
 
   const onClickLogout = useCallback(() => {
     dispatch(logOut());
+    Router.push('/');
   }, [dispatch]);
 
   // show가 false면 화면에 메뉴를 나타내지 않는다.
