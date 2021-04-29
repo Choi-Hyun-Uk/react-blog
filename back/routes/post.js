@@ -5,6 +5,8 @@ const { User, Post, Comment, Image } = require('../models');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const multer = require('multer');
 const { Op } = require('sequelize');
+const multerS3 = require('multer-s3');
+const AWS = require('aws-sdk');
 
 const router = express.Router();
 
@@ -15,20 +17,38 @@ try {
     fs.mkdirSync('uploads'); // 없으면 생성
 }
 
+AWS.config.update({
+    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+    region: 'ap-northeast-2',
+});
+
 // 이미지 업로드 설정
 const upload = multer({
-    storage: multer.diskStorage({ // 하드디스크에 저장
-        destination(req, file, done) {
-            done(null, 'uploads'); // uploads 폴더에 저장
-        },
-        filename(req, file, done) {
-            const ext = path.extname(file.originalname); // 파일 확장자 추출
-            const basename = path.basename(file.originalname, ext).normalize(); // 파일 이름 추출
-            done(null, basename + '_' + new Date().getTime() + ext); // 이름 + 시간 + 확장자
+    storage: multerS3({
+        s3: new AWS.S3(),
+        bucket: 'react-blog-S3',
+        key(req, file, cd) {
+            cd(null, `original/${Date.now()}_${path.basename(file.originalname)}`);
         },
     }),
     limits: { filesize: 20 * 1024 * 1024 }, // 20MB 제한
 });
+
+// S3 설정 전 DB 저장 방법(로컬)
+// const upload = multer({
+//     storage: multer.diskStorage({ // 하드디스크에 저장
+//         destination(req, file, done) {
+//             done(null, 'uploads'); // uploads 폴더에 저장
+//         },
+//         filename(req, file, done) {
+//             const ext = path.extname(file.originalname); // 파일 확장자 추출
+//             const basename = path.basename(file.originalname, ext).normalize(); // 파일 이름 추출
+//             done(null, basename + '_' + new Date().getTime() + ext); // 이름 + 시간 + 확장자
+//         },
+//     }),
+//     limits: { filesize: 20 * 1024 * 1024 }, // 20MB 제한
+// });
 
 // 게시글 작성 - POST /post
 router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
@@ -310,7 +330,7 @@ router.get('/:nickname', async (req, res, next) => {
         //     });
         //     return res.status(200).json(fullPost);
         // }
-        
+
         const post = await Post.findAll({
             where : { UserId: user.id },
             order: [
@@ -414,7 +434,8 @@ router.post('/images', isLoggedIn, upload.array('image'), async (req, res, next)
     // req.files - array
     // req.file - single
     console.log(req.files);
-    res.json(req.files.map((v) => v.filename));
+    // DB 로컬 저장 시 - res.json(req.files.map((v) => v.filename));
+    res.json(req.files.map((v) => v.location));
 });
 
 // POST /post/image/1
