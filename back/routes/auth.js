@@ -35,9 +35,9 @@ router.post('/login', async (req, res, next) => {
 
 // 로그아웃 - GET /auth/logout
 router.get('/logout', (req, res) => {
-    req.session.destroy(function(){
+    req.session.destroy(function (){
         req.logOut();
-        res.redirect('/');
+        res.redirect('http://chudevlog.com');
     });
 });
 
