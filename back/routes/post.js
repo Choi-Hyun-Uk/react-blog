@@ -1,14 +1,14 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs'); // 파일시스템 모듈
-const { User, Post, Comment, Image } = require('../models');
-const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const multer = require('multer');
-const { Op } = require('sequelize');
 const multerS3 = require('multer-s3');
 const AWS = require('aws-sdk');
 
 const router = express.Router();
+
+const { User, Post, Comment, Image } = require('../models');
+const { isLoggedIn } = require('./middlewares');
 
 try {
     fs.accessSync('uploads'); // uploads 폴더 유무 체크
@@ -27,7 +27,7 @@ AWS.config.update({
 const upload = multer({
     storage: multerS3({
         s3: new AWS.S3(),
-        bucket: 'react-blog-S3',
+        bucket: 'react-blog-s3',
         key(req, file, cd) {
             cd(null, `original/${Date.now()}_${path.basename(file.originalname)}`);
         },
