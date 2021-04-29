@@ -10,6 +10,8 @@ const hpp = require('hpp');
 const dotenv = require('dotenv');
 const passortConfig = require('./passport');
 
+dotenv.config();
+
 // 라우트 불러오기
 const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
@@ -18,8 +20,6 @@ const postsRouter = require('./routes/posts'); // 포스트 여러개 불러오�
 
 // 모델 불러오기
 const db = require('./models');
-
-dotenv.config();
 
 // app 변수에 express 객체 담기
 const app = express();
