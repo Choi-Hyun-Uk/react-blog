@@ -47,7 +47,7 @@ const UserProfile = () => {
     <ProfileWrapper>
       <div className="inner">
         <div className="user-thumb">
-          {user.Images.length > 0 && (
+          {user?.Images?.length > 0 && (
             <div>
               <img src={`${backURL}/${user.Images[0].src}`} />
             </div>
