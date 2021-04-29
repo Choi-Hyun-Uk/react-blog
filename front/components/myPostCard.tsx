@@ -31,7 +31,7 @@ const MyPostCard = ({ post }) => {
           </h1>
         </div>
         <div className="user-info">
-          {post?.User?.Images.length > 0 && (
+          {post.User?.Images?.length > 0 && (
             <div>
               <img src={`${backURL}/${post.User.Images[0].src}`} />
             </div>
@@ -39,7 +39,7 @@ const MyPostCard = ({ post }) => {
           <p>{post.User.nickname}</p>
         </div>
         <div className="post-desc">
-          {post?.Images?.length > 0 && (
+          {post.Images?.length > 0 && (
             <div className="image">
               <img src={`${backURL}/${post.Images[0].src}`} />
             </div>
@@ -47,7 +47,7 @@ const MyPostCard = ({ post }) => {
           <p>{post.content}</p>
         </div>
         <div className="post-info">
-          <div>{post.Comments.length}개 댓글</div>
+          <div>{post.Comments?.length}개 댓글</div>
           <span>{date.format('YYYY년 MM월 DD일')}</span>
         </div>
       </div>
