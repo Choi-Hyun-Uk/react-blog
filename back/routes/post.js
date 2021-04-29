@@ -269,55 +269,52 @@ router.get('/:nickname', async (req, res, next) => {
         }
 
         // 조건 기본값
-        const where = { UserId: user.id };
+        // const where = { UserId: user.id };
 
         // 초기 로딩 후 스크롤링 시 where 조회
-        if (parseInt(req.query.last, 10) > 0) {
-            // 마지막 포스트의 id값 보다 작은 포스트를 불러오기
-            where.id = { [Op.lt]: parseInt(req.query.last, 10) };
-        }
+        // if (parseInt(req.query.last, 10) > 0) {
+        //     // 마지막 포스트의 id값 보다 작은 포스트를 불러오기
+        //     where.id = { [Op.lt]: parseInt(req.query.last, 10) };
+        // }
         
         // 프로필 이미지 - id가 최대값인 image 가져오기
-        const image = await Image.max('id', {
-            where: { userId: user.id },
-        });
+        // const imageId = await Image.max('id', {
+        //     where: { userId: user.id },
+        // });
 
-        if (image) {
-            const fullPost = await Post.findAll({
-                where,
-                order: [
-                    ['createdAt', 'DESC'], // 기본값은 'ASC' 오름차순
-                    [Comment, 'createdAt', 'DESC'],
-                ],
-                limit: 5,
-                include: [{
-                    model: User,
-                    attributes: ['id', 'nickname'],
-                    include: [{
-                        model: Image,
-                        where: { id: image },
-                    }],
-                }, {
-                    model: Comment,
-                    include: [{
-                        model: User,
-                        attributes: ['id', 'nickname'],
-                    }],
-                }, {
-                    model: User,
-                    as: 'Likers',
-                    attributes: ['id'],
-                }, {
-                    model: Image,
-                }],
-            });
-            return res.status(200).json(fullPost);
-        }
+        // if (imageId) {
+        //     const fullPost = await Post.findAll({
+        //         where,
+        //         order: [
+        //             ['createdAt', 'DESC'], // 기본값은 'ASC' 오름차순
+        //         ],
+        //         limit: 5,
+        //         include: [{
+        //             model: User,
+        //             attributes: ['id', 'nickname'],
+        //             include: [{
+        //                 model: Image,
+        //                 where: { id: imageId },
+        //             }],
+        //         }, {
+        //             model: Comment,
+        //             attributes: ['id'],
+        //         }, {
+        //             model: User,
+        //             as: 'Likers',
+        //             attributes: ['id'],
+        //         }, {
+        //             model: Image,
+        //             attributes: ['id', 'src'],
+        //         }],
+        //     });
+        //     return res.status(200).json(fullPost);
+        // }
+        
         const post = await Post.findAll({
-            where,
+            where : { UserId: user.id },
             order: [
                 ['createdAt', 'DESC'], // 기본값은 'ASC' 오름차순
-                [Comment, 'createdAt', 'DESC'],
             ],
             limit: 5,
             include: [{
@@ -325,16 +322,14 @@ router.get('/:nickname', async (req, res, next) => {
                 attributes: ['id', 'nickname'],
             }, {
                 model: Comment,
-                include: [{
-                    model: User,
-                    attributes: ['id', 'nickname'],
-                }],
+                attributes: ['id'],
             }, {
                 model: User,
                 as: 'Likers',
                 attributes: ['id'],
             }, {
                 model: Image,
+                attributes: ['id', 'src'],
             }],
         });
         res.status(200).json(post);
