@@ -435,7 +435,10 @@ router.post('/images', isLoggedIn, upload.array('image'), async (req, res, next)
     // req.file - single
     console.log(req.files);
     // DB 로컬 저장 시 - res.json(req.files.map((v) => v.filename));
-    res.json(req.files.map((v) => v.location));
+    // s3에 이미지 업로드 시 원본은 original로 가고, lambda 함수로 thumb 폴더에 리사이징 이미지 전달된다.
+    // 일반적으로 사용 시 리사이징된 이미지를 사용하기 위에 original로 된 경로를 thumb로 바꿔준다.
+    // original 이미지가 필요할 시 프론트 img에서 바꿔준다.
+    res.json(req.files.map((v) => v.location.replace(/\/original\//, '/thumb/')));
 });
 
 // POST /post/image/1

@@ -158,7 +158,7 @@ router.post('/image', isLoggedIn, upload.single('image'), async (req, res, next)
     // req.files - array
     // req.file - single
     console.log(req.file);
-    res.json(req.file.location);
+    res.json(req.file.location.replace(/\/original\//, '/thumb/'));
 });
 
 module.exports = router;

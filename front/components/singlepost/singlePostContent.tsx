@@ -159,7 +159,7 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
             <Slider {...settings}>
               {post.Images.map((v) => (
                 <div key={v.id} className="thumb-img">
-                  <img key={v.id} src={v.src} />
+                  <img key={v.id} src={v.src.replace(/\/thumb\//, '/original/')} />
                 </div>
               ))}
             </Slider>
