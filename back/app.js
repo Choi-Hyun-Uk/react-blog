@@ -34,6 +34,9 @@ db.sequelize.sync()
 // 패스포트 js 실행
 passortConfig();
 
+// nginx로 proxy reverse로 인한 추가 코드
+app.set('proxy: ture', 1);
+
 if (process.env.NODE_ENV === 'production') { // 배포 시
     // 로깅 미들웨어
     app.use(morgan('combined'));
@@ -71,6 +74,7 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   secret: process.env.COOKIE_SECRET,
+  proxy: true,
   cookie: {
     httpOnly: true,
     secure: true,
