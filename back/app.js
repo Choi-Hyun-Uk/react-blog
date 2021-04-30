@@ -35,9 +35,8 @@ db.sequelize.sync()
 passortConfig();
 
 // nginx로 proxy reverse로 인한 추가 코드
-app.set('proxy: ture', 1);
-
 if (process.env.NODE_ENV === 'production') { // 배포 시
+    app.enable('trust proxy');
     // 로깅 미들웨어
     app.use(morgan('combined'));
     app.use(helmet());
@@ -74,10 +73,10 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   secret: process.env.COOKIE_SECRET,
-  proxy: true,
+  proxy: process.env.NODE_ENV === 'production',
   cookie: {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     domain: process.env.NODE_ENV === 'production' && '.chudevlog.com'
   },
 }));

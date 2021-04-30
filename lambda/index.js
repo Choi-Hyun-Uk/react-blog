@@ -11,7 +11,6 @@ exports.imageHandler = async (event, context, callback) => {
   console.log('Bucket',Bucket, 'Key', Key);
   const filename = Key.split('/')[1]; // original/12312312_abc.png -> [0]original / [1]12312312_abc.png
   const ext = filename.match(/\.([^.]*)$/)[1]; // . 제외한 확장자명
-  // const requiredFormat = ext === 'jpg' ? 'jpeg' : ext; // jpg -> jpeg
   console.log('filename', filename, 'ext', ext);
 
   if (ext !== 'jpg' && ext !== 'png' && ext !== 'gif') {
