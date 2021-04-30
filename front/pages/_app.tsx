@@ -10,7 +10,7 @@ const App: FC<any> = ({ Component, pageProps }) => {
 
   // 정규표현식 - url 타이틀 특수문자 및 공백 '-'변환 후 마지막 '-'은 제거
   const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
-  const regex2 = singlePost.title.replace(regex, '-');
+  const regex2 = singlePost?.title.replace(regex, '-');
   const title = regex2.replace(/-$/, '');
 
   return (
