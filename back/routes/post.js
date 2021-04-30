@@ -147,7 +147,8 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
                 await post.addImages(images);
             } else { // 이미지 한 개 업로드 시 - image: '1.png'
                 const image = await Image.create({ src: req.body.image });
-                await post.addImages(image);
+                const fullImage = await post.addImages(image);
+                console.log(fullImage);
             }
         }
 
