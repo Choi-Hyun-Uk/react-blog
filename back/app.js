@@ -36,11 +36,12 @@ passortConfig();
 
 // nginx로 proxy reverse로 인한 추가 코드
 if (process.env.NODE_ENV === 'production') { // 배포 시
-    app.enable('trust proxy');
+    console.log('배포 중');
+    app.enable('trust proxy'); // true
     // 로깅 미들웨어
     app.use(morgan('combined'));
-    app.use(helmet());
     app.use(hpp());
+    app.use(helmet());
     // CORS 처리를 위한 미들웨어 - 배포용
     app.use(cors({
         origin: 'https://chudevlog.com', // 브라우저에서 서버간 허용 주소
