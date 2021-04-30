@@ -25,7 +25,7 @@ const EditPostForm = ({
 
   // 첨부한 이미지 백서버로 보낸 후 받아오기 (미리보기)
   const onChangeImage = useCallback((e) => {
-    console.log(e.target.files); // 선택한 파일에 대한 정보
+    // console.log(e.target.files); // 선택한 파일에 대한 정보
     const imageFormData = new FormData(); // multipart form data로 보낼 수 있음
     [].forEach.call(e.target.files, (f) => {
       imageFormData.append('image', f); // image - key, f - value
@@ -34,7 +34,6 @@ const EditPostForm = ({
   }, []);
 
   const onImageUpload = useCallback(() => {
-    console.log('이미지 업로드');
     imageInput.current.click();
   }, [imageInput.current]);
 
@@ -90,7 +89,7 @@ const EditPostForm = ({
           <div className="add-img-preview">
             {imagePaths.map((item, i) => (
               <div key={i}>
-                <img src={item} alt={item} />
+                <img src={item.replace(/\/thumb\//, '/original/')} alt={item} />
               </div>
             ))}
           </div>
