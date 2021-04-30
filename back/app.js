@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === 'production') { // 배포 시
     app.use(hpp());
     // CORS 처리를 위한 미들웨어 - 배포용
     app.use(cors({
-        origin: 'http://www.chudevlog.com', // 브라우저에서 서버간 허용 주소
+        origin: 'https://www.chudevlog.com', // 브라우저에서 서버간 허용 주소
         credentials: true, // front, back 간 쿠키 전달 허용
     }));
 } else {
