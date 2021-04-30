@@ -84,9 +84,11 @@ const postSlice = createSlice({
         state.singlePost.Images.push(payload.image);
         state.updatePostDone = true;
         state.updatePostLoading = false;
+        state.imagePaths = [];
       })
       .addCase(editPost.rejected, (state, action) => {
         state.updatePostLoading = false;
+        state.imagePaths = [];
       })
 
       // 포스트 불러오기
