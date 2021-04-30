@@ -385,11 +385,13 @@ router.get('/:nickname/:title', async (req, res, next) => {
             return {title: item.title.replace(/-$/, ''), id: item.id}
         });
         // 변환을 거친 포스트 제목과 req.params.title과 비교
-        const find = b.filter((item) => item.title === req.params.title);
+        const find = b.filter((item) => item.title === req.params.title)[0];
+        const finds = b.filter((item) => item.title === req.params.title);
+        console.log(finds);
 
         // 비교해서 나온 결과물의 id로 DB 조회
         const post = await Post.findOne({
-            where: { id: find[0].id },
+            where: { id: find.id },
             include: [{
                 model: User, // 포스트 작성자
                 attributes: ['id', 'nickname'],
