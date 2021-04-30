@@ -80,16 +80,16 @@ const EditPostForm = ({
                 <button type="button" className="remove-btn" onClick={onRemoveImage(v.id)}>
                   <RiAddFill />
                 </button>
-                <img src={v.src} />
+                <img src={v.src.replace(/\/thumb\//, '/original/')} />
               </div>
             ))}
           </>
         ) : null}
         {imagePaths.length > 0 && (
           <div className="add-img-preview">
-            {imagePaths.map((item, i) => (
+            {imagePaths.map((src, i) => (
               <div key={i}>
-                <img src={item.replace(/\/thumb\//, '/original/')} alt={item} />
+                <img src={src.replace(/\/thumb\//, '/original/')} alt={src} />
               </div>
             ))}
           </div>
