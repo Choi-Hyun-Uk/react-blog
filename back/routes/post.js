@@ -146,8 +146,8 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
                 const images = await Promise.all(
                     req.body.image.map((src) => Image.create({ src: src }))
                 );
-                console.log(images);
                 await post.addImages(images);
+                console.log('Promise images',images);
                 return res.status(200).json({
                     postId: req.body.postId,
                     title: req.body.title,
