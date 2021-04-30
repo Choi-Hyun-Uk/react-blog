@@ -89,8 +89,7 @@ const EditPostForm = ({
           <div className="add-img-preview">
             {imagePaths.map((item, i) => (
               <div key={i}>
-                {/* <img src={item.replace(/\/thumb\//, '/original/')} alt={item} /> */}
-                <img src={item} alt={item} />
+                <img src={item.replace(/\/thumb\//, '/original/')} alt={item} />
               </div>
             ))}
           </div>

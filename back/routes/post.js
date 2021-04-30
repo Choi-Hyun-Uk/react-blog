@@ -147,25 +147,19 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
                     req.body.image.map((image) => Image.create({ src: image }))
                 );
                 await post.addImages(images);
-
-                console.log('images', images);
-
                 return res.status(200).json({
                     postId: req.body.postId,
                     title: req.body.title,
-                    image: req.body.images,
+                    image: images,
                     content: req.body.content,
                 });
             } else { // 이미지 한 개 업로드 시 - image: '1.png'
                 const image = await Image.create({ src: req.body.image });
                 await post.addImages(image); // 해당 포스트 전체 내용
-
-                console.log('image', image);
-
                 res.status(200).json({
                     postId: req.body.postId,
                     title: req.body.title,
-                    image: req.body.image,
+                    image: image,
                     content: req.body.content,
                 });
             }

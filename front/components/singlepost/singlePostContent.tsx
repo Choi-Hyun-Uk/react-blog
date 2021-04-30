@@ -27,8 +27,6 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
   const postUser = post.User.id; // 포스트 작성자 id
   const dispatch = useDispatch();
 
-  console.log(post?.Images);
-
   const settings = {
     dots: true,
     infinite: true,
@@ -156,7 +154,7 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
             <Slider {...settings}>
               {post.Images.map((v) => (
                 <div key={v.id} className="thumb-img">
-                  <img key={v.id} src={v.src.replace(/\/thumb\//, '/original/')} />
+                  <img key={v.id} src={v.src} />
                 </div>
               ))}
             </Slider>
