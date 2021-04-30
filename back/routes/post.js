@@ -148,7 +148,7 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
                 );
                 await post.addImages(images);
 
-                res.status(200).json({
+                return res.status(200).json({
                     postId: req.body.postId,
                     title: req.body.title,
                     image: req.body.images,
