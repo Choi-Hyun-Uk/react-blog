@@ -14,14 +14,18 @@ exports.imageHandler = async (event, context, callback) => {
   // const requiredFormat = ext === 'jpg' ? 'jpeg' : ext; // jpg -> jpeg
   console.log('filename', filename, 'ext', ext);
 
+  if (ext !== 'jpg' && ext !== 'png' && ext !== 'gif') {
+    return console.log(`${ext} 확장자를 지원하지 않습니다. jpg, png, gif 확장자로 이용해주세요.`)
+  }
+
   try {
     const s3Object = await s3.getObject({ Bucket, Key }).promise();
     console.log('original body', s3Object.Body);
     console.log('original body length', s3Object.Body.length);
     const resizedImage = await sharp(s3Object.Body)
       .resize(400, 400, { fit: 'inside' })
-      .toFormat(ext)
       .toBuffer();
+    console.log('resizedImage', resizedImage);
     await s3.putObject({
       Bucket,
       Key: `thumb/${filename}`,
