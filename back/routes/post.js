@@ -134,7 +134,7 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
             }
         );
 
-        console.log('req.body.image', req.body.image);
+        console.log('req.body.image', req.body.image); // 이미지 주소
 
         const post = await Post.findOne({ where: { id: req.body.postId } });
 
@@ -147,19 +147,25 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
                     req.body.image.map((image) => Image.create({ src: image }))
                 );
                 await post.addImages(images);
+
+                res.status(200).json({
+                    postId: req.body.postId,
+                    title: req.body.title,
+                    image: req.body.images,
+                    content: req.body.content,
+                });
             } else { // 이미지 한 개 업로드 시 - image: '1.png'
                 const image = await Image.create({ src: req.body.image });
-                const fullImage = await post.addImages(image);
-                console.log('fullImage', fullImage);
+                await post.addImages(image); // 해당 포스트 전체 내용
+
+                res.status(200).json({
+                    postId: req.body.postId,
+                    title: req.body.title,
+                    image: req.body.image,
+                    content: req.body.content,
+                });
             }
         }
-
-        res.status(200).json({
-            postId: req.body.postId,
-            title: req.body.title,
-            image: req.body.image,
-            content: req.body.content,
-        });
     } catch(error) {
         console.log('게시글 수정하기 에러발생!!!!');
         console.error(error);
