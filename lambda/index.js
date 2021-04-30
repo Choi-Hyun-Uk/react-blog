@@ -9,14 +9,15 @@ exports.imageHandler = async (event, context, callback) => {
   const Bucket = event.Records[0].s3.bucket.name; // react-blog-s3
   const Key = decodeURIComponent(event.Records[0].s3.object.key); // original/12312312_abc.png
   console.log('Bucket',Bucket, 'Key', Key);
-  const filename = Key.split('/')[Key.split('/').length - 1];
-  const ext = Key.split('.')[Key.split('.').length - 1].toLowerCase();
-  const requiredFormat = ext === 'jpg' ? 'jpeg' : ext;
+  const filename = Key.split('/')[1]; // original/12312312_abc.png -> [0]original / [1]12312312_abc.png
+  const ext = filename.match(/\.([^.]*)$/)[1]; // . 제외한 확장자명
+  const requiredFormat = ext === 'jpg' ? 'jpeg' : ext; // jpg -> jpeg
   console.log('filename', filename, 'ext', ext);
 
   try {
     const s3Object = await s3.getObject({ Bucket, Key }).promise();
-    console.log('original', s3Object.Body.length);
+    console.log('original body', s3Object.Body);
+    console.log('original body length', s3Object.Body.length);
     const resizedImage = await sharp(s3Object.Body)
       .resize(400, 400, { fit: 'inside' })
       .toFormat(requiredFormat)
