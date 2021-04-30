@@ -134,6 +134,8 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
             }
         );
 
+        console.log('req.body.image', req.body.image);
+
         const post = await Post.findOne({ where: { id: req.body.postId } });
 
         if (req.body.image) { 
@@ -148,7 +150,7 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
             } else { // 이미지 한 개 업로드 시 - image: '1.png'
                 const image = await Image.create({ src: req.body.image });
                 const fullImage = await post.addImages(image);
-                console.log(fullImage);
+                console.log('fullImage', fullImage);
             }
         }
 
