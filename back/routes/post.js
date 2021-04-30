@@ -147,11 +147,10 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
                     req.body.image.map((src) => Image.create({ src: src }))
                 );
                 await post.addImages(images);
-                console.log('fullImages', fullImages);
                 return res.status(200).json({
                     postId: req.body.postId,
                     title: req.body.title,
-                    image: fullImages,
+                    image: images,
                     content: req.body.content,
                 });
             } else { // 이미지 한 개 업로드 시 - image: '1.png'
