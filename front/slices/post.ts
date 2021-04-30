@@ -81,6 +81,7 @@ const postSlice = createSlice({
       .addCase(editPost.fulfilled, (state, { payload }: any) => {
         state.singlePost.title = payload.title;
         state.singlePost.content = payload.content;
+        console.log('image', payload.image);
         state.singlePost.Images.push(payload.image);
         state.updatePostDone = true;
         state.updatePostLoading = false;
