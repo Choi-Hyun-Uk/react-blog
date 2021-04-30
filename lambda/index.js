@@ -7,7 +7,7 @@ const s3 = new AWS.S3();
 // event - S3에서 작업 진행 
 exports.imageHandler = async (event, context, callback) => {
   const Bucket = event.Records[0].s3.bucket.name; // react-blog-s3
-  const Key = decodeURIComponent(event.Records[0].s3.object.key).replace(/\+/g, " "); // original/12312312_abc.png
+  const Key = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, " ")); // original/12312312_abc.png
   console.log('Bucket',Bucket, 'Key', Key);
   const filename = Key.split('/')[1]; // original/12312312_abc.png -> [0]original / [1]12312312_abc.png
   const ext = filename.match(/\.([^.]*)$/)[1]; // . 제외한 확장자명
