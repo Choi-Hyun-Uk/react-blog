@@ -73,10 +73,6 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
     [content],
   );
 
-  const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
-  const regex2 = title.replace(regex, '-');
-  const postTitle = regex2.replace(/-$/, '');
-
   const onSubmitImageUpload = useCallback(
     (e) => {
       e.preventDefault();
@@ -91,12 +87,6 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
     },
     [title, content, imagePaths],
   );
-
-  // useEffect(() => {
-  //   if(updatePostDone) {
-  //     Router.replace(`/${post.User.nickname}/${postTitle}`);
-  //   }
-  // }, []);
 
   // 게시글 삭제
   const onDeletePost = useCallback(() => {
