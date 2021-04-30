@@ -25,9 +25,9 @@ const App: FC<any> = ({ Component, pageProps }) => {
         <meta property="og:title" content={`${singlePost?.User.nickname}님의 게시글`} />
         <meta
           property="og:description"
-          content={singlePost.Images[0] ? singlePost.Images[0].src : 'http://chudevlog.com/favicon.ico'}
+          content={singlePost?.Images[0] ? singlePost.Images[0].src : 'http://chudevlog.com/favicon.ico'}
         />
-        <meta property="og:url" content={`http://chudevlog.com/${singlePost.User.nickname}/${title}`} />
+        <meta property="og:url" content={`http://chudevlog.com/${singlePost?.User.nickname}/${singlePost && title}`} />
         <link rel="icon" href="/favicon.ico"></link>
         <title>My Blog</title>
       </Head>
