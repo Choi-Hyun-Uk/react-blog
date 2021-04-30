@@ -48,7 +48,7 @@ const UserProfile = () => {
         <div className="user-thumb">
           {user?.Images?.length > 0 && (
             <div>
-              <img src={user.Images[0].src} />
+              <img src={user.Images[0].src.replace(/\/thumb\//, '/original/')} />
             </div>
           )}
           {/* {user.Images.length <= 0 && ( */}
