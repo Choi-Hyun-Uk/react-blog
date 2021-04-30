@@ -144,8 +144,9 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
                 // create가 Promise기 때문에, Promise.all로 한번에 진행한다.
                 // 이미지파일은 uploads에 저장을하고, DB에서는 경로만 저장을해서 불러온다.
                 const images = await Promise.all(
-                    req.body.image.map((image) => Image.create({ src: image }))
+                    req.body.image.map((src) => Image.create({ src: src }))
                 );
+                console.log(images);
                 await post.addImages(images);
                 return res.status(200).json({
                     postId: req.body.postId,
