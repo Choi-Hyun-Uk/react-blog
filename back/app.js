@@ -84,7 +84,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/', (req, res) => {
-    res.send('80 포트 연결!');
+    res.send('3065 포트 연결!');
 });
 
 // 라우터 설정
@@ -109,6 +109,6 @@ app.use((err, req, res, next) => {
 //     console.log(app.get('port'), '번 포트애서 대기중');
 // });
 
-app.listen(80, () => {
+app.listen(3065, () => {
     console.log('서버 실행 중!');
 });
