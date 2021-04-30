@@ -37,6 +37,7 @@ export const ModalWrapper = styled.div`
   background: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  z-index: 99999999999;
 `;
 
 // 게시글 삭제 모달 자식
@@ -88,6 +89,7 @@ export const DeleteModalBox = styled.div`
 // 로그인 모달 자식
 export const LoginModalBox = styled.div`
   text-align: center;
+  z-index: 99999999999;
 
   & h1 {
     font-weight: bold;
