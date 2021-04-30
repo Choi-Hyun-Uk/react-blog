@@ -88,10 +88,15 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
       formData.append('title', title); // append - req.body.title
       formData.append('content', content); // append - req.body.content
       dispatch(editPost(formData));
-      Router.replace(`/${post.User.nickname}/${postTitle}`);
     },
     [title, content, imagePaths],
   );
+
+  // useEffect(() => {
+  //   if(updatePostDone) {
+  //     Router.replace(`/${post.User.nickname}/${postTitle}`);
+  //   }
+  // }, []);
 
   // 게시글 삭제
   const onDeletePost = useCallback(() => {
