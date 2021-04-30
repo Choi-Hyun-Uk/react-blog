@@ -85,8 +85,9 @@ const postSlice = createSlice({
           payload.image.map((v) => {
             state.singlePost.Images.push(v);
           });
+        } else {
+          state.singlePost.Images.push(payload.image);
         }
-        state.singlePost.Images.push(payload.image);
         state.updatePostDone = true;
         state.updatePostLoading = false;
         state.imagePaths = [];
