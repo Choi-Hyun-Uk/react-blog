@@ -14,40 +14,42 @@ const PostCardLayout = ({ item }) => {
 
   return (
     <PostLayout>
-      {item.Images.length > 0 ? (
-        <div className="thumb">
-          <img src={item.Images[0].src} />
-          {item.Images.length > 1 && <div>+ {item.Images.length}</div>}
-        </div>
-      ) : null}
-      <div className="post-info">
-        <Link
-          href={{
-            pathname: '/[pagename]/[id]',
-            query: { postId: item.id },
-          }}
-          as={`/${item.User.nickname}/${title}`}
-        >
-          <a className="title">{item.title}</a>
-        </Link>
-        <p className="content">{item.content}</p>
-        <div className="option">
-          <p className="user-info">
-            {item.User.Images.length > 0 && (
-              <span>
-                <img src={item.User.Images[0].src} />
-              </span>
-            )}
-            {item.User.nickname}
-          </p>
-          <div className="like">
-            <HiHeart />
-            {item.Likers.length}
+      <div className="postLayout-inner">
+        {item.Images.length > 0 ? (
+          <div className="thumb">
+            <img src={item.Images[0].src} />
+            {item.Images.length > 1 && <div>+ {item.Images.length}</div>}
           </div>
-        </div>
-        <div className="post-option">
-          <span>{date.format('YYYY년 MM월 DD일')}</span>
-          <span>{item.Comments.length}개의 댓글</span>
+        ) : null}
+        <div className="post-info">
+          <Link
+            href={{
+              pathname: '/[pagename]/[id]',
+              query: { postId: item.id },
+            }}
+            as={`/${item.User.nickname}/${title}`}
+          >
+            <a className="title">{item.title}</a>
+          </Link>
+          <p className="content">{item.content}</p>
+          <div className="option">
+            <p className="user-info">
+              {item.User.Images.length > 0 && (
+                <span>
+                  <img src={item.User.Images[0].src} />
+                </span>
+              )}
+              {item.User.nickname}
+            </p>
+            <div className="like">
+              <HiHeart />
+              {item.Likers.length}
+            </div>
+          </div>
+          <div className="post-option">
+            <span>{date.format('YYYY년 MM월 DD일')}</span>
+            <span>{item.Comments.length}개의 댓글</span>
+          </div>
         </div>
       </div>
     </PostLayout>
