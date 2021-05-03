@@ -10,6 +10,7 @@ import PostCard from 'components/postCard/postCard';
 import WriteForm from 'components/writeForm';
 import { loadUser } from 'actions/user';
 import { postsLoad } from 'actions/post';
+import { PostCardInner } from 'styles/styles';
 
 const Home = () => {
   const { loadPostsLoading, loadPostsMore } = useSelector((state: RootState) => state.post);
@@ -42,8 +43,10 @@ const Home = () => {
   return (
     <>
       <HeaderForm />
-      <WriteForm />
-      <PostCard />
+      <PostCardInner>
+        <WriteForm />
+        <PostCard />
+      </PostCardInner>
     </>
   );
 };
