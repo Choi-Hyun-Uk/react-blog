@@ -2,15 +2,15 @@ import styled from '@emotion/styled';
 
 // 댓글 입력 폼
 export const CommentFormBox = styled.div`
-  margin-bottom: 60px;
+  margin-bottom: 4rem;
 
   & .write-btn {
     text-align: right;
-    margin-top: 14px;
+    margin-top: 0.825rem;
     & button {
       background: #20c997;
       color: white;
-      padding: 8px 16px;
+      padding: 0.5rem 1rem;
       border-radius: 2px;
       cursor: pointer;
     }
@@ -19,9 +19,10 @@ export const CommentFormBox = styled.div`
   & textarea {
     width: 100%;
     height: 100px;
+    font-size: 0.825rem;
     resize: none;
     border: 1px solid #dee2e6;
-    padding: 20px;
+    padding: 1.25rem;
     outline: none;
     box-sizing: border-box;
     vertical-align: bottom;
@@ -38,13 +39,13 @@ export const CommentList = styled.li`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 40px;
+  margin-bottom: 1.25rem;
+  padding-bottom: 3rem;
   border-bottom: 1px solid #dee2e6;
 
   & .comment-list-wrapper {
     flex: 1;
-    padding-right: 40px;
+    padding-right: 3rem;
     & .user-info {
       display: flex;
       flex-direction: row;
@@ -54,7 +55,7 @@ export const CommentList = styled.li`
         height: 40px;
         border-radius: 50%;
         overflow: hidden;
-        margin-right: 10px;
+        margin-right: 0.625rem;
         & img {
           display: block;
           width: 100%;
@@ -63,7 +64,7 @@ export const CommentList = styled.li`
         }
       }
       & h1 {
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: bold;
         color: #20c997;
       }
@@ -71,9 +72,9 @@ export const CommentList = styled.li`
     & .date {
       display: block;
       font-weight: normal;
-      font-size: 14px;
+      font-size: 0.825rem;
       color: #adb5bd;
-      margin: 20px 0;
+      margin: 1.25rem 0;
     }
   }
 
@@ -82,7 +83,7 @@ export const CommentList = styled.li`
     height: 100px;
     resize: none;
     border: 1px solid #dee2e6;
-    padding: 20px;
+    padding: 1.25rem;
     outline: none;
     box-sizing: border-box;
     vertical-align: bottom;
@@ -94,9 +95,10 @@ export const CommentList = styled.li`
 
   & .comment-option {
     & button:first-of-type {
-      margin-right: 10px;
+      margin-right: 0.625rem;
     }
     & button {
+      font-size: 0.825rem;
       cursor: pointer;
       background: transparent;
       color: #adb5bd;

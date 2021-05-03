@@ -6,22 +6,35 @@ export const PostWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  max-width: 1040px;
-  margin: 50px auto 0 auto;
-  padding-bottom: 100px;
+  width: 1032px;
+  margin-left: -1rem;
+  margin-top: 3rem;
+
+  @media only screen and (max-width: 600px) {
+    margin-left: 0;
+    width: 100%;
+  }
 `;
 
 // 포스트 레이아웃
 export const PostLayout = styled.div`
   display: flex;
   flex-direction: column;
-  width: 306px;
-  margin: 20px;
+  width: 33.333333%;
+  padding: 1rem;
+  box-sizing: border-box;
 
-  border-radius: 4px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+  & .postLayout-inner {
+    height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 
   & .thumb {
     position: relative;
@@ -47,10 +60,11 @@ export const PostLayout = styled.div`
   }
 
   & .post-info {
-    padding: 20px 12px;
+    padding: 1.25rem 0.75rem;
     & .title {
+      font-size: 1rem;
       font-weight: bold;
-      margin-bottom: 16px;
+      margin-bottom: 0.875rem;
       line-height: 1.2;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -60,12 +74,11 @@ export const PostLayout = styled.div`
       word-break: keep-all;
     }
     & > p {
-      font-size: 13px;
+      font-size: 0.875rem;
       line-height: 1.5;
       word-break: break-word;
       overflow-wrap: break-word;
-      line-height: 1.5;
-      height: 57px;
+      height: 3.5rem;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -78,21 +91,20 @@ export const PostLayout = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin-top: 10px;
-      padding-top: 10px;
+      padding: 0.825rem 0;
       border-top: 1px solid #dee2e6;
-      line-height: 20px;
+      line-height: 1.5;
       & .user-info {
         display: flex;
         align-items: center;
-        font-size: 14px;
+        font-size: 0.825rem;
         color: #495057;
         & span {
           display: inline-block;
           width: 30px;
           height: 30px;
           overflow: hidden;
-          margin-right: 10px;
+          margin-right: 0.625rem;
           border-radius: 50%;
           & img {
             display: block;
@@ -106,18 +118,17 @@ export const PostLayout = styled.div`
         display: flex;
         & svg {
           cursor: pointer;
-          margin-right: 10px;
+          margin-right: 0.625rem;
         }
       }
     }
   }
 
   & .post-option {
-    margin-top: 10px;
-    font-size: 12px;
+    font-size: 0.75rem;
     & span {
       &:first-of-type {
-        margin-right: 10px;
+        margin-right: 0.625rem;
       }
       color: #adb5bd;
     }

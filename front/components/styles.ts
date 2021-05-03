@@ -7,7 +7,7 @@ export const LoginWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  padding: 40px;
+  padding: 3rem;
 
   background: white;
   border-radius: 12px;
@@ -15,7 +15,7 @@ export const LoginWrapper = styled.div`
 
   & .user-icon {
     text-align: center;
-    font-size: 28px;
+    font-size: 1.8rem;
     color: #0ca678;
     margin-bottom: 40px;
   }
@@ -24,16 +24,15 @@ export const LoginWrapper = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 40px; */
 
   & div {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
 
   & input {
     width: 100%;
     line-height: 46px;
-    padding-left: 14px;
+    padding-left: 0.825rem;
     box-sizing: border-box;
     border-bottom: 2px solid #dee2e6;
 
@@ -44,9 +43,9 @@ export const Form = styled.form`
 
   & button {
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     line-height: 46px;
-    font-size: 16px;
+    font-size: 1rem;
     border-radius: 2px;
     background: #0ca678;
     color: white;
@@ -57,9 +56,9 @@ export const Form = styled.form`
 
   & a {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 0.625rem;
     line-height: 46px;
-    font-size: 16px;
+    font-size: 1rem;
     border-radius: 2px;
     border: 1px solid #fd7e14;
     box-sizing: border-box;
@@ -78,25 +77,25 @@ export const SignupWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  padding: 40px;
+  padding: 3rem;
 
   text-align: center;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.2);
 `;
 export const SignupBox = styled.form`
   display: flex;
   flex-direction: column;
 
   & div {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
 
   & input {
     width: 100%;
-    line-height: 46px;
-    padding-left: 14px;
+    line-height: 3rem;
+    padding-left: 0.825rem;
     box-sizing: border-box;
     border-bottom: 2px solid #dee2e6;
 
@@ -107,9 +106,9 @@ export const SignupBox = styled.form`
 
   & button {
     cursor: pointer;
-    margin-top: 20px;
-    line-height: 46px;
-    font-size: 16px;
+    margin-top: 1.25rem;
+    line-height: 3rem;
+    font-size: 1rem;
     border-radius: 2px;
     background: #0ca678;
     color: white;
@@ -120,15 +119,17 @@ export const SignupBox = styled.form`
 `;
 // 비밀번호 에러
 export const Error = styled.p`
-  font-size: 14px;
+  font-size: 0.625rem;
   color: #c92a2a;
-  text-align: center;
+  text-align: left;
+  line-height: 1.5;
+  word-break: keep-all;
 `;
 
 // Header Form
 export const HeaderWrapper = styled.div`
   background: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
 
   & .inner {
     position: relative;
@@ -139,7 +140,7 @@ export const HeaderWrapper = styled.div`
     max-width: 1000px;
     height: 60px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0 1rem;
   }
 
   & .menuBtn {
@@ -148,15 +149,15 @@ export const HeaderWrapper = styled.div`
     flex-direction: row-reverse;
     & svg {
       cursor: pointer;
-      font-size: 20px;
+      font-size: 1.25rem;
     }
     & .menu-btn {
-      margin-left: 14px;
+      margin-left: 1rem;
     }
   }
 
   & .search-btn {
-    margin-right: 14px;
+    margin-right: 1rem;
   }
 
   & strong {
@@ -168,19 +169,23 @@ export const HeaderWrapper = styled.div`
 // 글쓰기 폼
 export const WriteWrapper = styled.div`
   position: relative;
-  margin: 70px auto 0 auto;
-  max-width: 768px;
-  padding: 20px;
+  width: 100%;
+  padding: 1.5rem;
   box-sizing: border-box;
   background: white;
   border-radius: 6px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    padding: 1rem;
+  }
+
   & .login-box {
-    padding: 20px;
+    padding: 1.25rem;
     text-align: center;
     & p {
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
     }
     & div {
       display: flex;
@@ -188,7 +193,7 @@ export const WriteWrapper = styled.div`
       justify-content: center;
       & a {
         display: inline-block;
-        margin: 0 10px;
+        margin: 0 0.625rem;
         color: #dee2e6;
         &:hover {
           color: #20c997;
@@ -198,15 +203,15 @@ export const WriteWrapper = styled.div`
   }
 
   & .titlebox {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     & input {
       width: 100%;
-      line-height: 46px;
-      padding-left: 14px;
+      line-height: 2.5rem;
+      padding-left: 1rem;
       padding-bottom: 10px;
       box-sizing: border-box;
       border-bottom: 2px solid #dee2e6;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
 
       &:focus {
@@ -217,16 +222,17 @@ export const WriteWrapper = styled.div`
 
   & .textbox {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     & textarea {
       flex: 1;
       border: 1px solid #dee2e6;
       border-radius: 6px;
       height: 100px;
-      padding: 20px;
+      padding: 1.25rem;
       resize: none;
       outline: none;
       box-sizing: border-box;
+      font-size: 1rem;
 
       &:focus {
         border: 2px solid #20c997;
@@ -240,7 +246,8 @@ export const WriteWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     & button {
-      padding: 8px 16px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
       background: transparent;
       border-radius: 2px;
       cursor: pointer;
@@ -248,7 +255,7 @@ export const WriteWrapper = styled.div`
     & .file-btn {
       border: 1px solid #fd7e14;
       color: #fd7e14;
-      margin-right: 14px;
+      margin-right: 1rem;
     }
     & .write-btn {
       color: #0ca678;
@@ -282,20 +289,18 @@ export const ImgWrapper = styled.div`
 // 프로필 페이지 전체영역
 export const ProfileWrapper = styled.div`
   position: relative;
-  margin-top: 50px;
+  margin-top: 3rem;
   width: 100%;
   height: 100%;
-  background: white;
 
   & .inner {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 860px;
+    max-width: 860px;
     height: 100%;
     margin: 0 auto;
-    padding-top: 100px;
   }
 
   & .user-thumb {
@@ -304,7 +309,7 @@ export const ProfileWrapper = styled.div`
     height: 200px;
     border-radius: 50%;
     background: #dee2e6;
-    margin-bottom: 60px;
+    margin-bottom: 4rem;
     overflow: hidden;
     & img {
       display: block;
@@ -324,7 +329,7 @@ export const ProfileWrapper = styled.div`
       background: rgba(0, 0, 0, 0.4);
       cursor: pointer;
       color: white;
-      font-size: 20px;
+      font-size: 1.25rem;
     }
   }
 `;
@@ -333,17 +338,18 @@ export const ProfileFormBox = styled.div`
   padding-bottom: 100px;
 
   & div {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 40px;
     &:first-of-type {
-      margin-bottom: 40px;
+      margin-bottom: 3rem;
     }
   }
 
   & label {
-    margin-right: 20px;
+    margin-right: 1.25rem;
     font-weight: bold;
   }
 
@@ -351,7 +357,7 @@ export const ProfileFormBox = styled.div`
     width: 300px;
     min-width: 100px;
     height: 40px;
-    padding: 0 20px;
+    padding: 0 1.25rem;
     box-sizing: border-box;
 
     &:disabled {
@@ -368,12 +374,55 @@ export const ProfileFormBox = styled.div`
   }
 
   & svg {
-    font-size: 20px;
-    margin-left: 20px;
+    font-size: 1.25rem;
+    margin-left: 1.25rem;
     color: #adb5bd;
     cursor: pointer;
     &:hover {
       color: #20c997;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+
+    & div {
+      flex-direction: column;
+      padding: 0 1rem;
+      height: auto;
+    }
+
+    & label {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+
+    & input {
+      width: 100%;
+      font-size: 1rem;
+      text-align: center;
+      min-width: 100px;
+      height: 40px;
+      padding: 0 1.25rem;
+      box-sizing: border-box;
+
+      &:disabled {
+        background: #e9ecef;
+      }
+
+      &:focus {
+        border-bottom: 2px solid #20c997;
+      }
+    }
+
+    & button {
+      position: absolute;
+      right: 2rem;
+    }
+
+    & svg {
+      position: absolute;
+      right: 1rem;
     }
   }
 `;

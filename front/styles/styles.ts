@@ -1,5 +1,16 @@
 import styled from '@emotion/styled';
 
+// 메인 페이지 Inner
+export const PostCardInner = styled.div`
+  position: relative;
+  width: 1000px;
+  margin: 4rem auto 0 auto;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+`;
+
 export const MyBlogWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -17,33 +28,47 @@ export const MyBlogWrapper = styled.div`
 // 나의 포스트 레이아웃
 export const MyPostBox = styled.div`
   position: relative;
-  width: 768px;
+  max-width: 768px;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 
   & > div {
     margin-bottom: 100px;
+    @media only screen and (max-width: 600px) {
+      margin-bottom: 5rem;
+    }
     & .post-title {
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
+      @media only screen and (max-width: 600px) {
+        padding: 0 1rem;
+      }
       & h1 {
-        font-size: 24px;
+        font-size: 2rem;
         font-weight: bold;
-        margin-bottom: 10px;
+        margin-bottom: 0.625rem;
       }
       & span {
-        font-size: 14px;
+        padding: 0 1rem;
+        font-size: 0.825rem;
         color: #adb5bd;
       }
     }
     & .user-info {
+      @media only screen and (max-width: 600px) {
+        padding: 1rem;
+      }
       display: flex;
       flex-direction: row;
       align-items: center;
-      padding-bottom: 20px;
+      padding-bottom: 1.25rem;
       & div {
         width: 30px;
         height: 30px;
         border-radius: 50%;
         overflow: hidden;
-        margin-right: 10px;
+        margin-right: 1.25rem;
         & img {
           display: block;
           width: 100%;
@@ -66,18 +91,19 @@ export const MyPostBox = styled.div`
         }
       }
       & p {
-        padding: 20px 10px;
+        padding: 1.25rem 1rem;
         border-bottom: 1px solid #dee2e6;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
       }
     }
     & .post-info {
       display: flex;
       flex-direction: row;
       align-items: center;
-      font-size: 14px;
+      padding: 0 1rem;
+      font-size: 0.825rem;
       & div {
-        margin-right: 20px;
+        margin-right: 1.25rem;
         color: #adb5bd;
       }
       & span {
@@ -90,7 +116,7 @@ export const MyPostBox = styled.div`
 // 검색 결과 포스트 카드 최상위 부모
 export const SearchPostCardWrapper = styled.div`
   position: relative;
-  width: 768px;
-  margin: 100px auto 0 auto;
-  padding-bottom: 100px;
+  max-width: 768px;
+  margin: 5rem auto 0 auto;
+  padding-bottom: 5rem;
 `;

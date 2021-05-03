@@ -134,8 +134,6 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
             }
         );
 
-        console.log('req.body.image', req.body.image); // 이미지 주소
-
         const post = await Post.findOne({ where: { id: req.body.postId } });
 
         if (req.body.image) { 

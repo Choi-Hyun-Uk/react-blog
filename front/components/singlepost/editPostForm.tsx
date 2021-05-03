@@ -99,7 +99,9 @@ const EditPostForm = ({
           <RiAddFill />
         </button>
       </div>
-      <textarea className="edit-content" value={content} onChange={onChangeContent} />
+      <div className="edit-content">
+        <textarea value={content} onChange={onChangeContent} />
+      </div>
     </form>
   );
 };

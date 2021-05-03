@@ -4,44 +4,52 @@ import styled from '@emotion/styled';
 export const SearchFormWrap = styled.div`
   position: relative;
   max-width: 768px;
-  margin: 70px auto 0 auto;
+  margin: 4rem auto 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-bottom: 2px solid #20c997;
-  padding-bottom: 10px;
+  padding-bottom: 0.625rem;
+
+  @media screen and (max-width: 600px) {
+    padding: 0 1rem;
+  }
 
   & div {
     flex: 1;
     & input {
       width: 100%;
       line-height: 40px;
-      font-size: 18px;
+      font-size: 1.25rem;
+      border-bottom: 2px solid #20c997;
     }
   }
 
   & svg {
-    font-size: 20px;
-    margin-right: 20px;
+    font-size: 1.25rem;
+    margin-right: 1.25rem;
   }
 `;
 
 // 검색 결과 포스트 레이아웃
 export const SearchPostCard = styled.div`
   position: relative;
-  width: 768px;
+  max-width: 768px;
 
   & > div {
-    margin-bottom: 100px;
+    margin-bottom: 5rem;
     & .post-title {
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
+      @media screen and (max-width: 600px) {
+        padding: 0 1rem;
+      }
       & h1 {
-        font-size: 24px;
+        font-size: 1.25rem;
         font-weight: bold;
-        margin-bottom: 10px;
+        margin-bottom: 0.25rem;
       }
       & span {
-        font-size: 14px;
+        padding: 0 1rem;
+        font-size: 0.825rem;
         color: #adb5bd;
       }
     }
@@ -49,13 +57,16 @@ export const SearchPostCard = styled.div`
       display: flex;
       flex-direction: row;
       align-items: center;
-      padding-bottom: 20px;
+      padding-bottom: 1.25rem;
+      @media screen and (max-width: 600px) {
+        padding: 0 1rem 1.25rem 1rem;
+      }
       & div {
         width: 30px;
         height: 30px;
         border-radius: 50%;
         overflow: hidden;
-        margin-right: 10px;
+        margin-right: 0.625rem;
         & img {
           display: block;
           width: 100%;
@@ -78,18 +89,21 @@ export const SearchPostCard = styled.div`
         }
       }
       & p {
-        padding: 20px 10px;
+        padding: 1.25rem 1rem;
         border-bottom: 1px solid #dee2e6;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
       }
     }
     & .post-info {
       display: flex;
       flex-direction: row;
       align-items: center;
-      font-size: 14px;
+      font-size: 0.825rem;
+      @media screen and (max-width: 600px) {
+        padding: 0 1rem;
+      }
       & div {
-        margin-right: 20px;
+        margin-right: 1.25rem;
         color: #adb5bd;
       }
       & span {

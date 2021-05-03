@@ -74,10 +74,10 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   secret: process.env.COOKIE_SECRET,
-  proxy: true,
+  proxy: process.env.NODE_ENV === 'production',
   cookie: {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     domain: process.env.NODE_ENV === 'production' && '.chudevlog.com'
   },
 }));
