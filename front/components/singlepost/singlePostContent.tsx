@@ -17,12 +17,13 @@ import NextArrow from './nextArrow';
 const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
   const post = useSelector((state: RootState) => state.post.singlePost);
   const user = useSelector((state: RootState) => state.user.user?.id);
+  const { updateLoading, updatePostDone } = useSelector((state: RootState) => state.post);
   const { imagePaths } = useSelector((state: RootState) => state.post);
+  const { removePostLoading, removePostDone, removePostError } = useSelector((state: RootState) => state.post);
   const [deletePostModalShow, setDeletePostModalShow] = useState(false);
   const [edit, setEdit] = useState(true);
   const [title, setTitle] = useState(post.title);
   const [content, setContent] = useState(post.content);
-  const { updateLoading, updatePostDone } = useSelector((state: RootState) => state.post);
   const date = dayjs(post.createdAt);
   const postUser = post.User.id; // 포스트 작성자 id
   const dispatch = useDispatch();
@@ -44,6 +45,13 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
       setEdit(true);
     }
   }, [updateLoading, updatePostDone]);
+
+  // 삭제 완료 시 메인 페이지 이동
+  useEffect(() => {
+    if (!removePostLoading && removePostDone) {
+      Router.replace('/');
+    }
+  }, [removePostLoading, removePostDone]);
 
   const onEditCancle = useCallback(() => {
     setEdit(true);
@@ -95,7 +103,6 @@ const SinglePostContent = ({ onClickLike, onClickUnLike }) => {
         postId: post.id,
       }),
     );
-    Router.replace('/');
   }, [post.id]);
 
   // 수정 아이콘 클릭 시

@@ -37,6 +37,9 @@ const initialState = {
   addPostLoading: false,
   addPostDone: false,
   addPostError: null,
+  removePostLoading: false,
+  removePostDone: false,
+  removePostError: false,
   updatePostLoading: false,
   updatePostDone: false,
   likePostLoading: false,
@@ -65,13 +68,17 @@ const postSlice = createSlice({
         state.addPostError = action.payload;
       })
       // 포스트 삭제
-      .addCase(removePost.pending, (state, action) => {})
+      .addCase(removePost.pending, (state, action) => {
+        state.removePostLoading = true;
+      })
       .addCase(removePost.fulfilled, (state, { payload }: any) => {
         state.posts = state.posts.filter((v) => v.id !== payload.postId);
+        state.removePostDone = true;
+        state.removePostLoading = false;
       })
       .addCase(removePost.rejected, (state, action) => {
-        state.addCommentDone = false;
-        state.addCommentLoading = true;
+        state.removePostError = action.payload;
+        state.removePostLoading = false;
       })
       // 포스트 수정
       .addCase(editPost.pending, (state, action) => {
