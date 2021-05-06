@@ -39,7 +39,7 @@ const initialState = {
   addPostError: null,
   removePostLoading: false,
   removePostDone: false,
-  removePostError: false,
+  removePostError: null,
   updatePostLoading: false,
   updatePostDone: false,
   likePostLoading: false,
