@@ -1,11 +1,51 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕',
-    나눔고딕, 'Nanum Gothic', 'Noto Sans KR', 'Noto Sans CJK KR', arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 700;
+  src: url('./public/fonts/spoqa/SpoqaHanSansNeo-Bold.woff2') format('woff2'),
+    url('./public/fonts/spoqa/SpoqaHanSansNeo-Bold.woff') format('woff'),
+    url('./public/fonts/spoqa/SpoqaHanSansNeo-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  src: url('./public/fonts/spoqa/SpoqaHanSansNeo-Medium.woff2') format('woff2'),
+    url('./public/fonts/spoqa/SpoqaHanSansNeo-Medium.woff') format('woff'),
+    url('./public/fonts/spoqa/SpoqaHanSansNeo-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 400;
+  src: url('./public/fonts/spoqa/SpoqaHanSansNeo-Regular.woff2') format('woff2'),
+    url('./public/fonts/spoqa/SpoqaHanSansNeo-Regular.woff') format('woff'),
+    url('./public/fonts/spoqa/SpoqaHanSansNeo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 300;
+  src: url('./public/fonts/spoqa/SpoqaHanSansNeo-Light.woff2') format('woff2'),
+    url('./public/fonts/spoqa/SpoqaHanSansNeo-Light.woff') format('woff'),
+    url('./public/fonts/spoqa/SpoqaHanSansNeo-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 100;
+  src: url('./public/fonts/spoqa/SpoqaHanSansNeo-Thin.woff2') format('woff2'),
+    url('./public/fonts/spoqa/SpoqaHanSansNeo-Thin.woff') format('woff'),
+    url('./public/fonts/spoqa/SpoqaHanSansNeo-Thin.ttf') format('truetype');
+}
+
+html {
+  font-size: 100%;
 }
 html,
 body,
 #__next {
   height: 100%;
+  font-family: 'Spoqa Han Sans Neo', sans-serif;
 }
 html,
 body,
