@@ -7,7 +7,6 @@ import dayjs from 'dayjs';
 
 import LoginModal from 'modal/loginModal';
 import DeleteCommentModal from 'modal/deleteCommentModal';
-import { backURL } from '../../config/config';
 
 const Comments = ({ item }) => {
   const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn); // 로그인 상태

@@ -123,7 +123,7 @@ export const PostLayout = styled.div`
         }
         & svg {
           cursor: pointer;
-          margin-right: 0.625rem;
+          margin-right: 0.25rem;
         }
       }
     }

@@ -231,6 +231,9 @@ router.post('/:postId/comment', isLoggedIn, async (req, res, next) => {
                 attributes: ['id', 'nickname'],
                 include: [{
                     model: Image,
+                    attributes: ['id', 'src'],
+                    order: [['createdAt', 'DESC']],
+                    limit: 1,
                 }],
             }]
         });
