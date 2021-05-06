@@ -180,6 +180,9 @@ button {
   margin: 0;
   border: none;
   outline: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  -webkit-border-radius: 0;
 }
 a {
   text-decoration: none;

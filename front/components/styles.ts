@@ -8,10 +8,15 @@ export const LoginWrapper = styled.div`
   transform: translate(-50%, -50%);
   width: 400px;
   padding: 3rem;
-
   background: white;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
 
   & .user-icon {
     text-align: center;
@@ -24,6 +29,9 @@ export const LoginWrapper = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 600px) {
+    padding: 0 1.25rem;
+  }
 
   & div {
     margin-bottom: 1.25rem;
@@ -31,8 +39,9 @@ export const Form = styled.form`
 
   & input {
     width: 100%;
-    line-height: 46px;
-    padding-left: 0.875rem;
+    font-size: 1rem;
+    line-height: 2.875rem;
+    padding-left: 1rem;
     box-sizing: border-box;
     border-bottom: 2px solid #dee2e6;
 
@@ -44,7 +53,7 @@ export const Form = styled.form`
   & button {
     cursor: pointer;
     margin-top: 1.25rem;
-    line-height: 46px;
+    line-height: 2.875rem;
     font-size: 1rem;
     border-radius: 2px;
     background: #0ca678;
@@ -57,7 +66,7 @@ export const Form = styled.form`
   & a {
     text-align: center;
     margin-top: 0.625rem;
-    line-height: 46px;
+    line-height: 2.875rem;
     font-size: 1rem;
     border-radius: 2px;
     border: 1px solid #fd7e14;
@@ -119,9 +128,9 @@ export const SignupBox = styled.form`
 `;
 // 비밀번호 에러
 export const Error = styled.p`
-  font-size: 0.625rem;
+  font-size: 1rem;
   color: #c92a2a;
-  text-align: left;
+  text-align: center;
   line-height: 1.5;
   word-break: keep-all;
 `;
