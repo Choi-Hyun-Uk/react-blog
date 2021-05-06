@@ -49,7 +49,7 @@ export const SearchPostCard = styled.div`
       }
       & span {
         padding: 0 1rem;
-        font-size: 0.825rem;
+        font-size: 0.875rem;
         color: #adb5bd;
       }
     }
@@ -98,7 +98,7 @@ export const SearchPostCard = styled.div`
       display: flex;
       flex-direction: row;
       align-items: center;
-      font-size: 0.825rem;
+      font-size: 0.875rem;
       @media screen and (max-width: 600px) {
         padding: 0 1rem;
       }

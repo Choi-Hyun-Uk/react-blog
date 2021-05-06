@@ -6,7 +6,7 @@ export const CommentFormBox = styled.div`
 
   & .write-btn {
     text-align: right;
-    margin-top: 0.825rem;
+    margin-top: 0.875rem;
     & button {
       background: #20c997;
       color: white;
@@ -19,7 +19,7 @@ export const CommentFormBox = styled.div`
   & textarea {
     width: 100%;
     height: 100px;
-    font-size: 0.825rem;
+    font-size: 0.875rem;
     resize: none;
     border: 1px solid #dee2e6;
     padding: 1.25rem;
@@ -72,7 +72,7 @@ export const CommentList = styled.li`
     & .date {
       display: block;
       font-weight: normal;
-      font-size: 0.825rem;
+      font-size: 0.875rem;
       color: #adb5bd;
       margin: 1.25rem 0;
     }
@@ -98,7 +98,7 @@ export const CommentList = styled.li`
       margin-right: 0.625rem;
     }
     & button {
-      font-size: 0.825rem;
+      font-size: 0.875rem;
       cursor: pointer;
       background: transparent;
       color: #adb5bd;

@@ -91,13 +91,13 @@ export const PostLayout = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding: 0.825rem 0;
+      padding: 0.875rem 0;
       border-top: 1px solid #dee2e6;
       line-height: 1.5;
       & .user-info {
         display: flex;
         align-items: center;
-        font-size: 0.825rem;
+        font-size: 0.875rem;
         color: #495057;
         & span {
           display: inline-block;
@@ -116,6 +116,8 @@ export const PostLayout = styled.div`
       }
       & .like {
         display: flex;
+        flex-direction: row;
+        align-items: center;
         & svg {
           cursor: pointer;
           margin-right: 0.625rem;

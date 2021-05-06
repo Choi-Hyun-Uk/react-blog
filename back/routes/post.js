@@ -10,12 +10,12 @@ const router = express.Router();
 const { User, Post, Comment, Image } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
-try {
-    fs.accessSync('uploads'); // uploads 폴더 유무 체크
-} catch (error) {
-    console.log('uploads 폴더가 없으므로 생성합니다.');
-    fs.mkdirSync('uploads'); // 없으면 생성
-}
+// try {
+//     fs.accessSync('uploads'); // uploads 폴더 유무 체크
+// } catch (error) {
+//     console.log('uploads 폴더가 없으므로 생성합니다.');
+//     fs.mkdirSync('uploads'); // 없으면 생성
+// }
 
 AWS.config.update({
     accessKeyId: process.env.S3_ACCESS_KEY_ID,
@@ -63,7 +63,6 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
         if (req.body.image) { 
             // Array.isArray - 배열 체크
             if (Array.isArray(req.body.image)) { // 이미지 여러 개 업로드 시 - image: ['1.png', '2.png']
-                // create가 Promise기 때문에, Promise.all로 한번에 진행한다.
                 // 이미지파일은 uploads에 저장을하고, DB에서는 경로만 저장을해서 불러온다.
                 const images = await Promise.all(
                     req.body.image.map((image) => Image.create({ src: image }))
@@ -139,13 +138,11 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
         if (req.body.image) { 
             // Array.isArray - 배열 체크
             if (Array.isArray(req.body.image)) { // 이미지 여러 개 업로드 시 - image: ['1.png', '2.png']
-                // create가 Promise기 때문에, Promise.all로 한번에 진행한다.
                 // 이미지파일은 uploads에 저장을하고, DB에서는 경로만 저장을해서 불러온다.
                 const images = await Promise.all(
                     req.body.image.map((src) => Image.create({ src: src }))
                 );
                 await post.addImages(images);
-                // const fullImages = Object.assign({}, images);
                 return res.status(200).json({
                     postId: req.body.postId,
                     title: req.body.title,
@@ -163,6 +160,7 @@ router.patch('/', isLoggedIn, upload.none(), async (req, res, next) => {
                 });
             }
         }
+
         res.status(200).json({ // 이미지 없이 수정 시
             postId: req.body.postId,
             title: req.body.title,

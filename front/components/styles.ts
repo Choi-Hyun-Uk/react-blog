@@ -32,7 +32,7 @@ export const Form = styled.form`
   & input {
     width: 100%;
     line-height: 46px;
-    padding-left: 0.825rem;
+    padding-left: 0.875rem;
     box-sizing: border-box;
     border-bottom: 2px solid #dee2e6;
 
@@ -95,7 +95,7 @@ export const SignupBox = styled.form`
   & input {
     width: 100%;
     line-height: 3rem;
-    padding-left: 0.825rem;
+    padding-left: 0.875rem;
     box-sizing: border-box;
     border-bottom: 2px solid #dee2e6;
 

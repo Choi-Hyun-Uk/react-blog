@@ -51,7 +51,7 @@ export const MyPostBox = styled.div`
       }
       & span {
         padding: 0 1rem;
-        font-size: 0.825rem;
+        font-size: 0.875rem;
         color: #adb5bd;
       }
     }
@@ -101,7 +101,7 @@ export const MyPostBox = styled.div`
       flex-direction: row;
       align-items: center;
       padding: 0 1rem;
-      font-size: 0.825rem;
+      font-size: 0.875rem;
       & div {
         margin-right: 1.25rem;
         color: #adb5bd;

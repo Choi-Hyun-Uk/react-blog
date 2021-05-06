@@ -43,7 +43,7 @@ const PostCardLayout = ({ item }) => {
             </p>
             <div className="like">
               <HiHeart />
-              {item.Likers.length}
+              <p>{item.Likers.length}</p>
             </div>
           </div>
           <div className="post-option">
