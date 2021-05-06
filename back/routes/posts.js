@@ -54,15 +54,9 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-// 게시글 불러오기 - GET /post
+// 검색 게시물 불러오기 - GET /post
 router.get('/:keyword', async (req, res, next) => {
     try {
-
-        // 초기 로딩 후 스크롤링 시 where 조회
-        // if (parseInt(req.query.last, 10) > 0) {
-        //     // 마지막 포스트의 id값 보다 작은 포스트를 불러오기
-        //     where.id = { [Op.lt]: parseInt(req.query.last, 10) };
-        // }
 
         const like = decodeURIComponent(req.params.keyword);
         
@@ -99,6 +93,7 @@ router.get('/:keyword', async (req, res, next) => {
                 attributes: ['id'],
             }, {
                 model: Image, // 포스트 이미지
+                order: [['createdAt', 'ASC']],
             }],
         });
         res.status(200).json(post);
