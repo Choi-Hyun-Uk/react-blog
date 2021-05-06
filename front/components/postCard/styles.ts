@@ -118,6 +118,9 @@ export const PostLayout = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
+        & p {
+          padding-top: 0.25rem;
+        }
         & svg {
           cursor: pointer;
           margin-right: 0.625rem;
