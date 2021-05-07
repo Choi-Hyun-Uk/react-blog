@@ -43,7 +43,10 @@ export const SinglePostWrapper = styled.div`
       & h1 {
         font-size: 2rem;
         font-weight: bold;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
+        @media screen and (max-width: 600px) {
+          font-size: 1.875rem;
+        }
       }
       & input {
         width: 100%;
@@ -95,6 +98,7 @@ export const SinglePostWrapper = styled.div`
   & .slider-wrapper {
     position: relative;
     margin-bottom: 100px;
+    overflow: hidden;
 
     & .slick-arrow {
       position: absolute;
@@ -105,7 +109,7 @@ export const SinglePostWrapper = styled.div`
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      line-height: 36px;
+      line-height: 2.25rem;
       cursor: pointer;
       color: white;
       background: rgba(0, 0, 0, 0.2);
