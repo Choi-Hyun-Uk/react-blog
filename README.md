@@ -17,6 +17,7 @@
 - Passport
 - Sequlize
 - Pm2
+- MySQL
 
 ### AWS 배포
 - EC2
