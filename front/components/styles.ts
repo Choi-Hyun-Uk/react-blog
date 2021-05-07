@@ -139,6 +139,9 @@ export const Error = styled.p`
 export const HeaderWrapper = styled.div`
   background: white;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 600px) {
+    box-shadow: 0;
+  }
 
   & .inner {
     position: relative;

@@ -152,7 +152,7 @@ section {
 }
 html,
 body {
-  line-height: 1;
+  line-height: 1.5;
   height: 100%;
 }
 ol,
@@ -184,7 +184,6 @@ button {
   -webkit-appearance: none;
   border-radius: 0;
   -webkit-border-radius: 0;
-  line-height: 1.5;
 }
 a {
   text-decoration: none;
@@ -194,7 +193,6 @@ ol {
   list-style: none;
 }
 pre {
-  line-height: 1.5;
   white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
   white-space: -pre-wrap; /* Opera */
   white-space: -o-pre-wrap; /* Opera */

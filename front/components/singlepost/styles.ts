@@ -79,6 +79,9 @@ export const SinglePostWrapper = styled.div`
       }
     }
     & .like {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       margin-top: 1.25rem;
       margin-bottom: 3rem;
       & svg {

@@ -89,9 +89,11 @@ export const SearchPostCard = styled.div`
         }
       }
       & p {
+        font-size: 1rem;
         padding: 1.25rem 1rem;
         border-bottom: 1px solid #dee2e6;
         margin-bottom: 1.25rem;
+        line-height: 1.5;
       }
     }
     & .post-info {

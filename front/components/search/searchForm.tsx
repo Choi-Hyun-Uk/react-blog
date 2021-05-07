@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { RiSearch2Line } from 'react-icons/ri';
 import { SearchFormWrap } from './styles';
 import { debounce } from 'lodash';
@@ -8,15 +8,23 @@ import { useDispatch } from 'react-redux';
 const SearchForm = () => {
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
-  const searchDispatch = useRef(debounce((text) => dispatch(searchPost(text)), 500)).current;
+  const searchDispatch = useRef(debounce((text) => dispatch(searchPost(text)), 1000)).current;
 
-  console.log(searchDispatch);
+  // const onChangeInput = useCallback(
+  //   (e) => {
+  //     setValue(e.target.value);
+  //     if (value.length > 0) {
+  //       searchDispatch(e.target.value);
+  //     }
+  //   },
+  //   [value],
+  // );
 
   const onChangeInput = useCallback(
     (e) => {
-      setValue(e.target.value);
+      setValue(e.currentTarget.value);
       if (value.length > 0) {
-        searchDispatch(e.target.value);
+        searchDispatch(e.currentTarget.value);
       }
     },
     [value],
