@@ -87,15 +87,23 @@ export const SignupWrapper = styled.div`
   transform: translate(-50%, -50%);
   width: 400px;
   padding: 3rem;
-
   text-align: center;
   background: white;
   border-radius: 12px;
   box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.2);
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
 `;
 export const SignupBox = styled.form`
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 600px) {
+    padding: 0 1.25rem;
+  }
 
   & div {
     margin-bottom: 1.25rem;
@@ -103,6 +111,7 @@ export const SignupBox = styled.form`
 
   & input {
     width: 100%;
+    font-size: 1rem;
     line-height: 3rem;
     padding-left: 0.875rem;
     box-sizing: border-box;
@@ -128,7 +137,7 @@ export const SignupBox = styled.form`
 `;
 // 비밀번호 에러
 export const Error = styled.p`
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: #c92a2a;
   text-align: center;
   line-height: 1.5;

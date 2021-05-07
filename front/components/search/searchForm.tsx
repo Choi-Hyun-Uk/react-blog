@@ -10,21 +10,11 @@ const SearchForm = () => {
   const dispatch = useDispatch();
   const searchDispatch = useRef(debounce((text) => dispatch(searchPost(text)), 1000)).current;
 
-  // const onChangeInput = useCallback(
-  //   (e) => {
-  //     setValue(e.target.value);
-  //     if (value.length > 0) {
-  //       searchDispatch(e.target.value);
-  //     }
-  //   },
-  //   [value],
-  // );
-
   const onChangeInput = useCallback(
     (e) => {
-      setValue(e.currentTarget.value);
+      setValue(e.target.value);
       if (value.length > 0) {
-        searchDispatch(e.currentTarget.value);
+        searchDispatch(e.target.value);
       }
     },
     [value],
