@@ -78,7 +78,8 @@ export const PostLayout = styled.div`
       line-height: 1.5;
       word-break: break-word;
       overflow-wrap: break-word;
-      height: 3.5rem;
+      height: 3.875rem;
+      margin-bottom: 0.875rem;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
