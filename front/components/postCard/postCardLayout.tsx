@@ -16,10 +16,20 @@ const PostCardLayout = ({ item }) => {
     <PostLayout>
       <div className="postLayout-inner">
         {item.Images.length > 0 ? (
-          <div className="thumb">
-            <img src={item.Images[0].src} />
-            {item.Images.length > 1 && <div>+ {item.Images.length}</div>}
-          </div>
+          <Link
+            href={{
+              pathname: '/[pagename]/[id]',
+              query: { postId: item.id },
+            }}
+            as={`/${item.User.nickname}/${title}`}
+          >
+            <a>
+              <div className="thumb">
+                <img src={item.Images[0].src} />
+                {item.Images.length > 1 && <div>+ {item.Images.length}</div>}
+              </div>
+            </a>
+          </Link>
         ) : null}
         <div className="post-info">
           <Link
