@@ -7,9 +7,11 @@
 ### Front
 - React JS
 - Next JS
+>Next 라우팅 시스템과 React에서 SSR(Server Side Randering)을 보다 쉽게 사용하기 위해 NextJS를 사용했습니다.
 - Redux Toolkit
 >상태를 관리하기 위해 Redux를 사용했습니다. 그 중 Redux Toolkit을 사용했습니다.  
-리듀서, 액션타입, 액션 생성함수, 초기상태 4가지를 하나의 함수로(Slice) 선언할 수 있는 장점이 있고, 
+리듀서, 액션타입, 액션 생성함수, 초기상태 4가지를 하나의 함수로(Slice) 선언할 수 있고,  
+Immer가 내장되어 있기 때문에 불변성을 지키는 것 또한 보다 쉽게 지킬 수 있는 장점으로 사용했습니다.
 - Emotion
 >각 컴포넌트에 스타일을 추가하고자 CSS-IN-JS 중 Emotion.js 라이브러리를 사용했습니다.
 - Eslint / Prettier
