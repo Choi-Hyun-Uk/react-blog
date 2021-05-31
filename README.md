@@ -14,8 +14,11 @@
 ### Back
 - Node JS
 - Express
+>빌드한 자바스크립트를 실행시키기 위해 NodeJS를 사용하였고, NodeJS에서 웹 서버를 보다 쉽게 구축하기 위해 Express를 사용했습니다.
 - Passport
+>NodeJS의 미들웨어로서 사용자 인증을 구현하기 위해 사용했습니다.
 - Sequlize
+>NodeJS에서 MySQL에 저장된 데이터를 JS문법으로 제어할 수 있도록 도와주는 Sequelize ORM을 사용했습니다.
 - Pm2
 - MySQL
 
