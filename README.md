@@ -8,8 +8,12 @@
 - React JS
 - Next JS
 - Redux Toolkit
+>상태를 관리하기 위해 Redux를 사용했습니다. 그 중 Redux Toolkit을 사용했습니다.  
+리듀서, 액션타입, 액션 생성함수, 초기상태 4가지를 하나의 함수로(Slice) 선언할 수 있는 장점이 있고, 
 - Emotion
+>각 컴포넌트에 스타일을 추가하고자 CSS-IN-JS 중 Emotion.js 라이브러리를 사용했습니다.
 - Eslint / Prettier
+>코드의 오타나 문제를 체크해주는 ESLINT와 규칙적인 코드를 작성하여, 코드의 가독성을 높힐 수 있는 Prettier를 사용했습니다.
 
 ### Back
 - Node JS
@@ -20,6 +24,7 @@
 - Sequlize
 >NodeJS에서 MySQL에 저장된 데이터를 JS문법으로 제어할 수 있도록 도와주는 Sequelize ORM을 사용했습니다.
 - Pm2
+>서비스가 종료되지 않고, 지속적으로 운영될 수 있도록 Process Manager PM2를 사용했습니다.
 - MySQL
 
 ### AWS 배포
@@ -32,7 +37,7 @@
 - Route53
 >EC2 인스턴스에서 받은 IP와 가비아에서 구매한 도메인을 연결시키기 위해(DNS-Domain Name System) 사용했습니다.
 - Nginx
->http - 80번 포트, https - 443번 포트로 도메인 접근 시 지정해둔 도메인으로 리다이렉트 되도록 하였습니다.
+>http(80번), https(443번) 도메인 접근 시 지정해둔 도메인으로 리다이렉트 되도록 하였습니다.
 
 ## 구현 기능
 - 회원가입 및 로그인 / 로그아웃
