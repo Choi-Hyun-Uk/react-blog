@@ -37,6 +37,9 @@ export const ModalWrapper = styled.div`
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   z-index: 99999999999;
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 // 게시글 삭제 모달 자식
@@ -88,10 +91,15 @@ export const DeleteModalBox = styled.div`
 // 로그인 모달 자식
 export const LoginModalBox = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 3.75rem 6.25rem;
   text-align: center;
   z-index: 99999999999;
-
+  @media screen and (max-width: 600px) {
+    padding: 3.75rem 0;
+  }
   & .closeBtn {
     position: absolute;
     display: block;
