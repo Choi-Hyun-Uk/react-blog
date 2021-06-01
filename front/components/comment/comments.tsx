@@ -117,7 +117,6 @@ const Comments = ({ item }) => {
           )}
         </>
       ) : null}
-      <LoginModal show={loginModalShow} />
       <DeleteCommentModal
         show={deleteCommentModalshow}
         onDeleteComment={onDeleteComment}
