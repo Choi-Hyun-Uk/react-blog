@@ -114,3 +114,7 @@ export const SearchPostCard = styled.div`
     }
   }
 `;
+
+export const NoneSearchResult = styled.div`
+  text-align: center;
+`;

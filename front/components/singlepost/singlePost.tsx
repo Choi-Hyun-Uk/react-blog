@@ -34,11 +34,15 @@ const SinglePost = () => {
     );
   }, [post]);
 
+  const onCloseLoginModal = useCallback(() => {
+    setLoginModalShow(false);
+  }, [loginModalShow]);
+
   return (
     <SinglePostWrapper>
       {post ? (
         <div className="inner">
-          <LoginModal show={loginModalShow} />
+          <LoginModal show={loginModalShow} onCloseLoginModal={onCloseLoginModal} />
           <SinglePostContent onClickLike={onClickLike} onClickUnLike={onClickUnLike} />
           <div className="comment-wrapper">
             <h1>댓글 ({post.Comments.length})</h1>

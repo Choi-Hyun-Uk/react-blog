@@ -25,6 +25,7 @@ export const LoginWrapper = styled.div`
     margin-bottom: 40px;
   }
 `;
+
 // 로그인 input 폼
 export const Form = styled.form`
   display: flex;
@@ -214,11 +215,22 @@ export const WriteWrapper = styled.div`
       justify-content: center;
       & a {
         display: inline-block;
+        width: 100px;
+        line-height: 2.75rem;
         margin: 0 0.625rem;
-        color: #dee2e6;
+        border-radius: 0.25rem;
+        box-sizing: border-box;
+      }
+      & .login-btn {
+        background-color: #20c997;
+        color: #fff;
         &:hover {
-          color: #20c997;
+          background-color: #12b886;
         }
+      }
+      & .signup-btn {
+        border: 1px solid #20c997;
+        color: #20c997;
       }
     }
   }

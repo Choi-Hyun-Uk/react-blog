@@ -173,8 +173,9 @@ export const removeImage = createAsyncThunk('/post/image/remove', async (data: I
   }
 });
 
-// 이미지 검색하기
+// 포스트 검색하기
 export const searchPost = createAsyncThunk('/posts/searchPost', async (data: string) => {
   const response = await axios.get(`/posts/${encodeURIComponent(data)}`);
+  console.log(response);
   return response.data;
 });

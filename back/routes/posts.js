@@ -57,9 +57,7 @@ router.get('/', async (req, res, next) => {
 // 검색 게시물 불러오기 - GET /post
 router.get('/:keyword', async (req, res, next) => {
     try {
-
         const like = decodeURIComponent(req.params.keyword);
-        
         // 최초 로드일 때는 order 순으로 9개를 불러온다.
         // 추후 스크롤링 시에는 마지막 id보다 작은 포스트를 order순으로 9개를 불러온다.
         const post = await Post.findAll({
@@ -97,8 +95,8 @@ router.get('/:keyword', async (req, res, next) => {
             }],
         });
         res.status(200).json(post);
+        // else if (post.length === 0) return res.status(200).send('검색 결과가 없습니다.');
     } catch(error) {
-        console.log('검색 게시글 불러오기 에러 발생!!!');
         console.error(error);
         next(error);
     }

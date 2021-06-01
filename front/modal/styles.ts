@@ -33,7 +33,6 @@ export const ModalWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 60px 100px;
   background: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
@@ -88,8 +87,22 @@ export const DeleteModalBox = styled.div`
 
 // 로그인 모달 자식
 export const LoginModalBox = styled.div`
+  position: relative;
+  padding: 3.75rem 6.25rem;
   text-align: center;
   z-index: 99999999999;
+
+  & .closeBtn {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 1.25rem;
+    padding: 1.25rem;
+    cursor: pointer;
+  }
 
   & h1 {
     font-weight: bold;

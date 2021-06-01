@@ -8,6 +8,7 @@ import { SearchPostCardWrapper } from '../styles/styles';
 import wrapper from 'store/configureStore';
 import axios from 'axios';
 import { loadUser } from 'actions/user';
+import NoneSearch from 'components/search/noneSearch';
 
 const Search = () => {
   const { searchPosts } = useSelector((state: RootState) => state.post);
@@ -22,7 +23,9 @@ const Search = () => {
               <SearchPost post={post} key={post.id} />
             ))}
           </>
-        ) : null}
+        ) : (
+          <NoneSearch />
+        )}
       </SearchPostCardWrapper>
     </>
   );

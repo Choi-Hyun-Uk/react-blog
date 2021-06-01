@@ -1,12 +1,12 @@
 import React from 'react';
+import { RiCloseFill } from 'react-icons/ri';
 import { ModalWrapper, LoginModalBox } from './styles';
 import Link from 'next/link';
 
-const LoginModal = ({ show }) => {
+const LoginModal = ({ show, onCloseLoginModal }) => {
   if (!show) {
     return null;
   }
-
   return (
     <ModalWrapper>
       {show && (
@@ -21,6 +21,9 @@ const LoginModal = ({ show }) => {
               <a className="signup-btn">회원가입</a>
             </Link>
           </div>
+          <span className="closeBtn" onClick={onCloseLoginModal}>
+            <RiCloseFill />
+          </span>
         </LoginModalBox>
       )}
     </ModalWrapper>

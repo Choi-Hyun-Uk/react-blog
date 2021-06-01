@@ -25,7 +25,7 @@ const initialState = {
   // images: [],
   posts: [], // 모든 포스트
   searchPosts: [], // 결과 결과 포스트
-
+  searchNonePosts: null,
   myPosts: [], // 나의 포스트
   loadMyPostsMore: true,
   loadMyPostsLoading: false,
@@ -219,7 +219,7 @@ const postSlice = createSlice({
         console.log('이미지 삭제 실패');
       })
 
-      // 포스트 검색하기
+      // 포스트 색하기
       .addCase(searchPost.pending, (state, action) => {
         console.log('포스트 검색 중');
       })
