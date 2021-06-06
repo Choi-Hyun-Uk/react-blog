@@ -1,6 +1,6 @@
 import React from 'react';
 import { HiHeart } from 'react-icons/hi';
-import { PostLayout } from './styles';
+import { PostLayout, DefaultContent, UserInfoContent } from './styles';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
@@ -31,7 +31,7 @@ const PostCardLayout = ({ item }) => {
             </a>
           </Link>
         ) : null}
-        <div className="post-info">
+        <DefaultContent>
           <Link
             href={{
               pathname: '/[pagename]/[id]',
@@ -42,25 +42,25 @@ const PostCardLayout = ({ item }) => {
             <a className="title">{item.title}</a>
           </Link>
           <p className="content">{item.content}</p>
-          <div className="option">
-            <p className="user-info">
-              {item.User.Images.length > 0 && (
-                <span>
-                  <img src={item.User.Images[0].src} />
-                </span>
-              )}
-              {item.User.nickname}
-            </p>
-            <div className="like">
-              <HiHeart />
-              <p>{item.Likers.length}</p>
-            </div>
-          </div>
           <div className="post-option">
             <span>{date.format('YYYY년 MM월 DD일')}</span>
             <span>{item.Comments.length}개의 댓글</span>
           </div>
-        </div>
+        </DefaultContent>
+        <UserInfoContent>
+          <p className="user-info">
+            {item.User.Images.length > 0 && (
+              <span>
+                <img src={item.User.Images[0].src} />
+              </span>
+            )}
+            {item.User.nickname}
+          </p>
+          <div className="like">
+            <HiHeart />
+            <p>{item.Likers.length}</p>
+          </div>
+        </UserInfoContent>
       </div>
     </PostLayout>
   );
