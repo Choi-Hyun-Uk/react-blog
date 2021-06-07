@@ -44,6 +44,18 @@ export const ModalWrapper = styled.div`
 
 // 게시글 삭제 모달 자식
 export const DeleteModalBox = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.75rem 6.25rem;
+  text-align: center;
+  z-index: 99999999999;
+
+  @media screen and (max-width: 600px) {
+    padding: 3.75rem 0;
+  }
+
   & h1 {
     font-weight: bold;
     font-size: 32px;
@@ -60,11 +72,14 @@ export const DeleteModalBox = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 250px;
 
     & button {
       cursor: pointer;
       background: white;
-      padding: 8px 16px;
+      width: 100px;
+      line-height: 40px;
+      font-size: 1rem;
     }
 
     & .cancle-btn {
@@ -97,9 +112,11 @@ export const LoginModalBox = styled.div`
   padding: 3.75rem 6.25rem;
   text-align: center;
   z-index: 99999999999;
+
   @media screen and (max-width: 600px) {
     padding: 3.75rem 0;
   }
+
   & .closeBtn {
     position: absolute;
     display: block;
