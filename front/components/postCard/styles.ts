@@ -36,6 +36,11 @@ export const PostLayout = styled.div`
     overflow: hidden;
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s all ease-in-out;
+    &:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
   }
 
   & .thumb {
